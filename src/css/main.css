@@ -1,0 +1,53 @@
+html,
+body,
+#root {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+.main-head {
+  grid-area: header;
+}
+.main-content {
+  grid-area: content;
+}
+.main-leftsidebar {
+  grid-area: leftsidebar;
+}
+.main-footer {
+  grid-area: footer;
+}
+.main-head {
+  background-color: green;
+}
+.main-content {
+  background-color: yellow;
+}
+.main-leftsidebar {
+  background-color: blue;
+  transition: all 1s;
+}
+.main-footer {
+  background-color: orange;
+}
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-areas: "header" "content" "leftsidebar" "footer";
+}
+@media (min-width: 500px) {
+  .wrapper {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "header  header" "leftsidebar content" "footer      footer";
+  }
+}
+@media (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: auto 1fr ;
+    grid-template-rows: minmax(30px, 80px) 1fr 30px;
+    grid-template-areas: "header header  " "leftsidebar    content " "footer footer  ";
+  }
+}
+/*# sourceMappingURL=main.css.map */

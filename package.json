@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "less": "^2.7.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.0"
@@ -12,7 +13,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "lessw": "less-watch-compiler",
+    "lessbuild": "lessc P:/Users/int93/Desktop/bgm-react/src/css/main.less P:/Users/int93/Desktop/bgm-react/src/css/main.css --source-map=P:/Users/int93/Desktop/bgm-react/src/css/main.css.map"
   },
   "devDependencies": {
     "eslint": "^4.15.0",
