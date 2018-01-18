@@ -1,5 +1,6 @@
 {
-    "watchFolder": "src/css",
-    "outputFolder": "src/css",
-    "mainFile": "main.less"
+    "watchFolder": "./src/css",
+    "outputFolder":"./src/css",
+    "mainFile": "main.less",
+     "allowedExtensions":[".less"]
 }

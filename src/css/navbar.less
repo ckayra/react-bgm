@@ -1,0 +1,39 @@
+
+.main-head .nav-condizioni{
+  grid-area: nav-condizioni;
+}
+.main-head .nav-menucataweb{
+  grid-area: nav-menucataweb;
+}
+.main-head .nav-logo{
+  grid-area: nav-logo;
+}
+.main-head .nav-agente{
+  grid-area: nav-agente;
+}
+.main-head .nav-cliente{
+  grid-area: nav-cliente;
+}
+.main-head .nav-carrello{
+  grid-area: nav-carrello;
+}
+.main-head .nav-menu{
+  grid-area: nav-menu;
+}
+.main-head .nav-ricerca{
+  grid-area: nav-ricerca;
+}
+
+.main-head {
+	display: grid;	
+	grid-gap: 1px;
+	background-color:red;
+    grid-template-columns: 1f 2f 3f 4f 5f;
+    grid-template-rows: 1f 1f;
+    grid-template-areas: 
+    "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello"
+    "nav-menucataweb nav-logo nav-menu nav-menu nav-ricerca";
+} 
+.main-head div{
+	border:1px solid black;
+}   
