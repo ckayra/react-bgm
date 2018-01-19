@@ -25,15 +25,78 @@
 }
 
 .main-head {
-	display: grid;	
-	grid-gap: 1px;
-	background-color:red;
-    grid-template-columns: 1f 2f 3f 4f 5f;
-    grid-template-rows: 1f 1f;
-    grid-template-areas: 
-    "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello"
-    "nav-menucataweb nav-logo nav-menu nav-menu nav-ricerca";
+  display: grid;
+  grid-gap: 1px;
+  background-color: red;
+  grid-template-columns: 80px 300px 1fr 1fr 1fr auto;
+  grid-template-rows: 1f 1f;
+  grid-template-areas: "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello nav-ricerca" "nav-menucataweb nav-logo nav-menu nav-menu nav-menu nav-menu";
 } 
 .main-head div{
-	border:1px solid black;
+	 border: 1px solid black;
+  display:flex;
+   display: -webkit-flex;
+  -webkit-align-items: center;
+   align-items: center;s
 }   
+
+
+
+
+.nav-ricerca input {
+	outline: none;
+}
+.nav-ricerca input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+.nav-ricerca input::-webkit-search-decoration,
+.nav-ricerca input::-webkit-search-cancel-button {
+	display: none; 
+}
+
+.nav-ricerca input[type=search] {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+		width: 15px;
+  padding-left: 10px;
+	color: transparent;
+	cursor: pointer;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+.nav-ricerca input[type=search]:hover {
+	background-color: #fff;
+}
+.nav-ricerca input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+  width: 130px;
+	padding-left: 32px;
+	color: #000;
+	background-color: #fff;
+	cursor: auto;
+}
+
+
+.nav-ricerca input:-moz-placeholder {
+		color: transparent;
+
+}
+.nav-ricerca input::-webkit-input-placeholder {
+	color: transparent;
+}

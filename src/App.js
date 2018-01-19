@@ -12,7 +12,7 @@ const App= () =>
 		<div className="nav-cliente">CLIENTE</div>
 		<div className="nav-carrello">CARRELLO</div>
 		<div className="nav-menu">MENU</div>
-		<div className="nav-ricerca">CERCA</div>
+		<div class="nav-ricerca"><input type="search" placeholder="Search"></div>
 
 
 	</div>
