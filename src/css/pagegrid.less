@@ -4,6 +4,8 @@ html, body, #root {
   	margin:0px;
 	padding:0px;
 	height:100%;
+  font-family: 'Roboto', sans-serif;
+  background-color:whitesmoke;
 }
 
 
@@ -24,10 +26,11 @@ html, body, #root {
   background-color:green;
 }
 .main-content {
-  background-color:yellow;
+
 }
 .main-leftsidebar {
-  background-color:blue;
+  background-color: @primary-bg;
+  color:@primary;
   transition: all 1s;
 }
 .main-footer {
@@ -37,13 +40,13 @@ html, body, #root {
 .wrapper {
 	height:100%;
 	display: grid;	
-	grid-gap: 1px;
+	grid-gap: 0px;
     grid-template-columns: auto 1fr;
     grid-template-rows: minmax(30px,80px) 1fr 30px;
     grid-template-areas: 
-    "header  header"
+    "leftsidebar  header"
     "leftsidebar content"
-    "footer      footer";
+    "leftsidebar      footer";
 }
 
 
