@@ -11,9 +11,10 @@ const App= () =>
 		
 		
 		<div className="nav-logo"><img src={imgLogoBgm} /></div>
-		<div className="nav-agente">GI.RA RAPPRESENTANZE SRL</div>
-		<div className="nav-cliente">GLOBE STORE DI ROCCA ANNA E F.LLI SNC (FANTASA WD)</div>
-		<div className="nav-carrello">2 Articoli € 123,45</div>
+		<div className="nav-agente"><i className="material-icons">supervisor_account</i>GI.RA RAPPRESENTANZE SRL</div>
+		<div className="nav-cliente"><i className="material-icons">person</i>GLOBE STORE DI ROCCA ANNA E F.LLI SNC (FANTASA WD)</div>
+		<div className="nav-carrello"><i className="material-icons">shopping_cart</i>2 Articoli € 123,45</div>
+		<div className="nav-user"><i className="material-icons">account_circle</i></div>
 		<div className="nav-menu">
  			<div>Carrelli aperti</div>
 		    <div>Ordini</div>

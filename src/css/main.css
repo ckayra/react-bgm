@@ -51,6 +51,9 @@ body,
 .main-head .nav-menucataweb {
   grid-area: nav-menucataweb;
 }
+.main-head .nav-user {
+  grid-area: nav-user;
+}
 .main-head .nav-agente {
   grid-area: nav-agente;
 }
@@ -130,9 +133,9 @@ body,
 }
 @media only screen and (min-width: 751px)  {
   .main-head {
-    grid-template-columns: 80px 300px 2fr 2fr 1fr auto;
+    grid-template-columns: 80px 300px auto auto auto  auto;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello ." ". nav-logo nav-menu nav-menu nav-menu nav-menu";
+    grid-template-areas: "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello nav-user" ". nav-logo nav-menu nav-menu nav-menu nav-menu";
   }
 }
 /*
@@ -202,6 +205,10 @@ body,
   height: 100%;
   justify-content: center;
   text-align: center;
+}
+.nav-agente,
+.nav-cliente {
+  font-size: 12px;
 }
 .nav-ricerca input {
   outline: none;
