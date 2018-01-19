@@ -8,10 +8,8 @@ const App= () =>
 <div className="wrapper">
 	<div className="main-head">
 		<div className="nav-burgermenu">MENU</div>
-		<div className="nav-condizioni"><img src={imgSettings} /></div>
-		<div className="nav-menucataweb">
-			<i className="material-icons">reorder</i>
-		</div>
+		
+		
 		<div className="nav-logo"><img src={imgLogoBgm} /></div>
 		<div className="nav-agente">GI.RA RAPPRESENTANZE SRL</div>
 		<div className="nav-cliente">GLOBE STORE DI ROCCA ANNA E F.LLI SNC (FANTASA WD)</div>
@@ -27,9 +25,24 @@ const App= () =>
 		    <div>Visualizza</div>
 		    <div>Carrello</div>
 		</div>
-		<div className="nav-ricerca"><input type="search" placeholder="Search"/></div>
+		
 	</div>
-	<div className="main-leftsidebar" ></div>
+	<div className="main-leftsidebar" >
+	<div className="main-leftsidebar-commands">
+		<div className="nav-menucataweb">
+			<i className="material-icons">reorder</i>
+		</div>
+		<div className="nav-condizioni"><img src={imgSettings} /></div>
+		</div>
+		<div>
+		<div className="nav-ricerca"><input type="search" placeholder="Search"/></div>
+<ul>
+<li>Menu 1</li>
+<li>Menu 1</li>
+<li>Menu 1</li>
+</ul>
+		</div>
+	</div>
 	<div className="main-content">CONTENT</div>
 	<div className="main-footer">FOOTER</div>
 </div>

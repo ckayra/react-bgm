@@ -96,7 +96,7 @@
   @media @medium {
     grid-template-columns: 80px 300px 2fr 2fr 1fr auto;
 	grid-template-rows: 1fr 1fr;
-	grid-template-areas: "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello nav-ricerca" "nav-menucataweb nav-logo nav-menu nav-menu nav-menu nav-menu";
+	grid-template-areas: "nav-condizioni  nav-logo nav-agente nav-cliente nav-carrello ." ". nav-logo nav-menu nav-menu nav-menu nav-menu";
 
 	}
 } 
@@ -143,10 +143,12 @@
 
 }
 
+/*
 .nav-menucataweb:hover {
   background: #1A535C;
   color: #fff;
 }
+*/
 
 .main-leftsidebar.menu-open {
 z-index:10;
@@ -167,4 +169,17 @@ width:40px;
 	  -moz-transition: all 300ms;
   -webkit-transition: all 300ms;
   transition: all 300ms;
+}
+
+.main-leftsidebar.menu-open .nav-menucataweb{
+float:right;
+}
+
+
+.main-leftsidebar-commands{
+float:right;
+	width:40px;
+	height:100%;
+	justify-content: center;
+	text-align:center;
 }
