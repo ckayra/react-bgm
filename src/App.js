@@ -7,6 +7,7 @@ const App= () =>
 
 <div className="wrapper">
 	<div className="main-head">
+
 		<div className="nav-burgermenu">MENU</div>
 		
 		
@@ -43,6 +44,7 @@ const App= () =>
 <li>Menu 1</li>
 </ul>
 		</div>
+
 	</div>
 	<div className="main-content">CONTENT</div>
 	<div className="main-footer">FOOTER</div>
