@@ -1,8 +1,8 @@
 import React  from 'react';
-import {Form,Button, Message, Icon} from'semantic-ui-react';
+import {Form,Button, Message, Icon} from 'semantic-ui-react';
 import PropTypes from 'prop-types'
-import InlineError from '../messages/InlineError';
 import {FormattedMessage} from 'react-intl'
+import InlineError from '../messages/InlineError';
 
 class LoginForm extends React.Component{
 	state={
@@ -17,7 +17,7 @@ class LoginForm extends React.Component{
 	onChange= e=> this.setState	({data:{...this.state.data, [e.target.name]: e.target.value}})
 
 	onSubmit = () =>{
-		const errors= this.validate(this.state.data);	
+		const errors= this.validate(this.state.data);
 		this.setState({errors});
 
 		// send submit to login page
@@ -58,7 +58,7 @@ class LoginForm extends React.Component{
 			{errors && errors.password && <InlineError text={errors.password}/>}
 				{errors && errors.global && <Message negative icon>
 					 <Icon name="warning sign" />
-					 <Message.Content> 
+					 <Message.Content>
 					<Message.Header>Si è verificato un errore</Message.Header>
 					<p>{errors.global}</p>
 					</Message.Content>

@@ -50,9 +50,16 @@
 
 .main-head .nav-menu div{
 
-	flex-grow:1;
-	min-width:100px;
+	// flex-grow:1;
+	// min-width:100px;
+	 min-width:60px;
+	 padding-right:30px;
 }
+
+.nav-submenu, .nav-submenu div{
+	padding-right:5px!important;
+}
+
 
 .main-head .nav-menu div{
 	justify-content: center;
@@ -130,26 +137,36 @@
 .nav-menu{
 	 font-family:'Oswald', sans-serif;
 	 font-size:18px;
+	 justify-content: left!important;
 
 }
-.nav-menu a{
+.nav-menu a, .nav-menu span{
 	border-bottom: none;
 	border-bottom: 3px solid @primary-bg;
 	padding-top:9px;
 	padding-bottom:9px;
 	 color:@primary;
 }
-.nav-menu a:hover {
+
+.nav-menu a{
+	width :100%;
+	text-align :center;
+
+}
+.nav-submenu a{
+	width :auto;
+}
+.nav-menu a:hover ,.nav-menu span:hover{
     border-bottom: 3px solid @primary;
   }
-.nav-menu a.active {
+.nav-menu a.active,.nav-menu span:active {
 	    border-bottom: 3px solid @primary;
 }
 
 .nav-menu a:visited{
 	 color:@primary;
 }
-.nav-menu a.nav-disabled {
+.nav-menu a.nav-disabled,.nav-menu span.nav-disabled {
     pointer-events: none;
 		color:lightgrey;
 }

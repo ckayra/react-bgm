@@ -1,84 +1,70 @@
 import React from 'react'
 import { connect } from "react-redux";
-import NavBarItem from './navbaritem'
-import styles from '../../css/navmenu.css';
+import NavBarLink from './navbarlink'
+import NavBarSubMenu from './navbarsubmenu'
 
-const NavMenu = ({isNavClientiVisible,isNavAgentiVisible,isNavNuovoClienteVisible,isNavClientiEnabled}) => {
-    // return (
-    //   <div className="nav-menu">
-    //     <NavLink  to="/carrelliaperti" text="Carrelli aperti" />
-    //     <NavLink  to="/ordini" text="Ordini" />
-    //
-    //       <Dropdown compact  text='Cataloghi' >
-    //       <Dropdown.Menu   >
-    //        <Dropdown.Item  ><NavLink  to="/catalogoweb" text="Catalogo Web" /></Dropdown.Item>
-    //        <Dropdown.Item text="Sfoglia Cataloghi" />
-    //       <Dropdown.Item text="Download immagini" />
-    //       </Dropdown.Menu>
-    //       </Dropdown>
-    //
-    //
-    //     {isNavClientiVisible &&  <NavLink  to="/clienti" className={isNavClientiEnabled ? '' : 'nav-disabled'}  text="Clienti" />}
-    //     {isNavAgentiVisible &&  <NavLink  to="/agenti" text="Agenti" />}
-    //     <NavLink  to="/backoffice" text="Back office" />
-    //     {isNavNuovoClienteVisible && <NavLink  to="/nuovocliente" text="Nuovo cliente" />}
-    //     <div>Visualizza</div>
-    //     <NavLink  to="/carrello" text="Carrello" />
-    //   </div>
-    // );
-var data = [
-  {
-    "text": "Carrelli aperti",
-    "url": "carrelliaperti"
-  },
-  {
-    "text": "Link 2",
-    "url": "#"
-  },
-  {
-    "text": "Link 3",
-    "url": "#",
-    "submenu": [
-      {
-        "text": "Sublink 1",
-        "url": "#",
-        "submenu": [
-          {
-            "text": "SubSublink 1",
-            "url": "#"
-          }
-        ]
-      },
-      {
-        "text": "Sublink 2",
-        "url":"#",
-        "submenu": [
-          {
-            "text": "SubSublink 2",
-            "url": "#"
-          }
-        ]
+class NavMenu extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        showSubMenu: ''
       }
-    ]
   }
-]
-    return(
+
+  onItemClick = (event,data) => {
+        if (this.state.showSubMenu===data){
+          this.setState({showSubMenu:undefined})
+        } else  this.setState({showSubMenu: data})
+ }
+
+
+  itemsCataloghi = [{"text": "Catalogo Web","url": "/catalogoweb"},
+   {"text": "Sfoglia Cataloghi","url": "sfogliacataloghi"},
+   {"text": "Download Immagini","url": "downloadimmagini",}]
+   itemsOrdini = [{"text": "Nuovo Carrello","url": "nuovocarrello"},
+    {"text": "Immissione da File/Lista","url": "immisionelista"},
+    {"text": "Ricerca per parola chiave","url": "ricerca",}]
+    itemsBackOffice = [{"text": "Dati Contabili","url": "daticontabili"},
+     {"text": "Ordini in corso","url": "ordiniincorso"},
+     {"text": "Fatture","url": "fatture"},
+   {"text":"Area Riservata","url":"areariservata"}]
+   itemsVisualizza = [{"text": "Con Prezzi","url": "visualizzaconprezzi"},
+    {"text": "Senza Prezzi","url": "visualizzasenzaprezzi"},
+    {"text": "Prezzi Suggeriti","url": "vissualizzaprezzisuggeriti",}]
+  render(isNavClientiVisible,isNavAgentiVisible,isNavNuovoClienteVisible,isNavClientiEnabled){
+    return (
       <div className="nav-menu">
+        <NavBarLink  onClick={this.onItemClick} to="/carrelliaperti" text="Carrelli aperti" />
 
-             {
+        <NavBarSubMenu text="Ordini" items={this.itemsOrdini} value="ordini" className={this.props.isNavOrdiniEnabled ? '' : 'nav-disabled'} onClick={(e)  => this.onItemClick(e,'ordini')} showSubMenu={this.state.showSubMenu}></NavBarSubMenu>
+        <NavBarSubMenu text="Cataloghi" items={this.itemsCataloghi} value="cataloghi" className={this.props.isNavCataloghiEnabled ? '' : 'nav-disabled'} onClick={(e) => this.onItemClick(e,'cataloghi')} showSubMenu={this.state.showSubMenu}></NavBarSubMenu>
 
-               data.map(item => <NavBarItem key={item.text} item={item}></NavBarItem>)
-             }
+
+          {this.props.isNavAgentiVisible &&  <NavBarLink  to="/agenti" text="Agenti" />}
+
+        {this.props.isNavClientiVisible &&  <NavBarLink  to="/clienti" className={this.props.isNavClientiEnabled ? '' : 'nav-disabled'}  text="Clienti" />}
+        <NavBarSubMenu text="Back Office" items={this.itemsBackOffice} value="backoffice" className={this.props.isNavBackOfficeEnabled ? '' : 'nav-disabled'} onClick={(e) => this.onItemClick(e,'backoffice')} showSubMenu={this.state.showSubMenu}></NavBarSubMenu>
+
+        {this.props.isNavNuovoClienteVisible && <NavBarLink  to="/nuovocliente" className={this.props.isNavNuovoClienteEnabled ? '' : 'nav-disabled'} text="Nuovo cliente" />}
+        <NavBarSubMenu text="Visualizza" items={this.itemsVisualizza} value="visualizza" className={this.props.isNavVisualizzaEnabled ? '' : 'nav-disabled'} onClick={(e) => this.onItemClick(e,'visualizza')} showSubMenu={this.state.showSubMenu}></NavBarSubMenu>
+
+        <NavBarLink  to="/carrello" text="Carrello" className={this.props.isNavCarrelloEnabled ? '' : 'nav-disabled'} />
       </div>
-    )
+    );
+  }
 }
-
 
 function mapStateToProps(state){
   return{
     isNavClientiVisible: !!(state.user.tipoUtente==='M' || state.user.tipoUtente==='A'),
     isNavAgentiVisible: state.user.tipoUtente==='M',
     isNavNuovoClienteVisible: state.user.tipoUtente==='M' || state.user.tipoUtente==='A',
+    isNavOrdiniEnabled: state.user.codiceCliente!=='',
+    isNavCataloghiEnabled: state.user.codiceCliente!=='',
+    isNavBackOfficeEnabled: state.user.codiceCliente!=='',
+    isNavNuovoClienteEnabled: state.user.codiceAgente!=='',
+    isNavVisualizzaEnabled: state.user.codiceCliente!=='',
+    isNavCarrelloEnabled: !!state.carrello,
     isNavClientiEnabled: state.user.tipoUtente==='A' || (state.user.tipoUtente==='M' && state.user.codiceAgente!=='')
   }
 }

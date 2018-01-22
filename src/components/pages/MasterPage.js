@@ -15,7 +15,7 @@ import DefaultHomeRoute from '../routes/DefaultHomeRoute'
 
 const MasterPage= ({location}) =>(
   <div className="wrapper">
-  <div className="main-head">
+  <div className="main-head shadow2">
     <div className="nav-burgermenu">MENU</div>
     <div className="nav-logo"><img src={imgLogoBgm} alt='logo' /></div>
     <div className="nav-agente"><i className="material-icons">supervisor_account</i>GI.RA RAPPRESENTANZE SRL</div>

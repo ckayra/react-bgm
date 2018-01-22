@@ -1,7 +1,7 @@
 import React  from 'react';
-import {Form,Button, Message} from'semantic-ui-react';
+import {Form,Button, Message} from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import InlineError from '../messages/InlineError';
+import InlineError from '../messages/InlineError'
 
 
 class ChangePasswordForm extends React.Component {
@@ -19,7 +19,7 @@ class ChangePasswordForm extends React.Component {
 
 
 	onSubmit = () =>{
-		const errors= this.validate(this.state.data);	
+		const errors= this.validate(this.state.data);
 		this.setState({errors});
 
 		// send submit to login page
@@ -47,12 +47,12 @@ class ChangePasswordForm extends React.Component {
 
 		return errors;
 	}
-	
+
 	render(){
 		const {data,errors, loading}=this.state;
 		return(
 			<Form onSubmit={this.onSubmit} loading={loading}>
-			
+
 			<Form.Field error={!!errors && !!errors.password}>
 				<label htmlFor='password'>Password</label>
 				<input type='password' id='password' name='password' placeholder='insert password' value={data.password} onChange={this.onChange} />
@@ -63,14 +63,14 @@ class ChangePasswordForm extends React.Component {
 				<input type='password' id='confirmpassword' name='confirmpassword' placeholder='confirm password' value={data.confirmpassword} onChange={this.onChange} />
 			</Form.Field>
 			{errors && errors.confirmpassword && <InlineError text={errors.confirmpassword}/>}
-		
+
 			{errors && errors.global && <Message negative>
 					<Message.Header>Something went wrong</Message.Header>
 					<p>{errors.global}</p>
 				</Message>}
 				<Button primary>Change Password</Button>
 			</Form>
-			
+
 
 		)
 	}

@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {Container} from 'semantic-ui-react'
 import LoginForm from "../forms/LoginForm";
 import ChangePasswordForm from "../forms/ChangePasswordForm";
 import { login,changepassword } from "../../actions/auth";
@@ -15,12 +16,14 @@ class LoginPage extends React.Component  {
 
   render() {
     return (
+      <Container>
       <div>
         <h1>Login page</h1>
         <ErrorBoundary>
          { this.props.mustChangePassword ?  <ChangePasswordForm submit={this.changeThePassword} /> :  <LoginForm submit={this.submit} />}
         </ErrorBoundary>
       </div>
+      </Container>
     );
   }
 }

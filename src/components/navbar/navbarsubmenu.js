@@ -1,15 +1,24 @@
 import React from 'react'
-import NavBarItem from './navbaritem'
+import { NavLink  } from 'react-router-dom';
 
 const NavBarSubMenu=(props) =>{
 
   return(
-    <div  className="nav-submenu"  >
-         {
-           props.items.map(item => <NavBarItem key={item.text} item={item}></NavBarItem>)
+    <div className="nav-hassubmenu">
+      <span onClick={((e) => props.onClick(e, 'cataloghi'))} className={props.className}>{props.text}</span>
+      {props.showSubMenu===props.value ? (
+        <div className="nav-submenu shadow2">
+          {props.items.map( item =>
+<div>
 
-         }
-    </div>
+              <NavLink  {...this.props} onClick={((e) => props.onClick(e, 'cataloghi'))} to={item.url} activeClassName='active' >{item.text}</NavLink >
+                </div>
+          )}
+
+        </div>
+      ):null
+    }
+      </div>
   )
 }
 

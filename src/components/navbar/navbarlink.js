@@ -1,12 +1,14 @@
-import React from 'react'
+import React  from 'react';
+import { NavLink  } from 'react-router-dom';
 
-const NavBarLink = (props)=>{
+export default class NavBarLink extends React.Component {
+  render() {
 
-  return( <a href={props.url}>{props.text}</a>)
+    return (
+        <div>
+        <NavLink  {...this.props} activeClassName='active' >{this.props.text}</NavLink >
+        </div>
 
-
-
+    );
+  }
 }
-
-
-export default NavBarLink
