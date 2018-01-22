@@ -127,9 +127,9 @@ body,
   grid-gap: 0px;
   background-color: #607d8b;
   color: white;
-  grid-template-columns: 80px  1fr 1fr  auto;
+  grid-template-columns: 80px  1fr;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: "nav-burgermenu  nav-agente nav-cliente nav-condizioni" "nav-menucataweb nav-carrello nav-carrello nav-ricerca";
+  grid-template-areas: "nav-burgermenu   nav-user" " nav-carrello nav-carrello ";
 }
 @media only screen and (min-width: 751px)  {
   .main-head {
@@ -159,6 +159,26 @@ body,
 .nav-menu {
   font-family: 'Oswald', sans-serif;
   font-size: 18px;
+}
+.nav-menu a {
+  border-bottom: none;
+  border-bottom: 3px solid #607d8b;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  color: white;
+}
+.nav-menu a:hover {
+  border-bottom: 3px solid white;
+}
+.nav-menu a.active {
+  border-bottom: 3px solid white;
+}
+.nav-menu a:visited {
+  color: white;
+}
+.nav-menu a.nav-disabled {
+  pointer-events: none;
+  color: lightgrey;
 }
 .nav-menucataweb {
   width: 36px;
@@ -258,4 +278,10 @@ body,
 }
 .nav-ricerca input::-webkit-input-placeholder {
   color: transparent;
+}
+i.icon {
+  font-size: 22px;
+}
+.hover:hover {
+  cursor: pointer;
 }
