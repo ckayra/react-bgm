@@ -13,8 +13,12 @@ export default {
 		keepalive:(credentials) => axios.post('http://localhost:40049/api/keepalive',credentials),
 	},
 	agenti:{
-		getAgenti:(credentials)=> axios.post('http://provebgm2.elelco.it/api/agenti', credentials).then(res => res.data.agenti),
-	}
+		getAgenti:(credentials)=>
+		axios
+			.post(`http://provebgm2.elelco.it/api/agenti`,credentials)
+			.then(res =>  res.data )
+			.catch(err => console.log(err))
+	},
 
 
  /* OFFLINE
