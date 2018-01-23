@@ -34,7 +34,7 @@
     "lessbuild": "lessc P:/Users/int93/Desktop/bgm-react/src/css/main.less P:/Users/int93/Desktop/bgm-react/src/css/main.css --source-map=P:/Users/int93/Desktop/bgm-react/src/css/main.css.map"
   },
   "devDependencies": {
-    "eslint": "^4.15.0",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",

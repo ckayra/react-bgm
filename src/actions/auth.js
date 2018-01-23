@@ -1,4 +1,4 @@
-import { USER_LOGGED_IN , USER_LOGGED_OUT,SET_AGENTE} from "../types";
+import { USER_LOGGED_IN , USER_LOGGED_OUT,SET_AGENTE, SET_CLIENTE} from "../types";
 import api from "../api";
 
 export const userLoggedIn = user => ({
@@ -10,10 +10,12 @@ export const userLoggedOut = user => ({
   type: USER_LOGGED_OUT,user
 });
 
-export const setAgente = agente => ({
-  type: SET_AGENTE,agente
+export const setAgente = user => ({
+  type: SET_AGENTE,user
 });
-
+export const setCliente = user => ({
+  type: SET_CLIENTE,user
+});
 
 export const login = credentials => dispatch =>
 	api.user.login(credentials).then(user => {
@@ -39,8 +41,14 @@ export const changepassword = (credentials, newpassword) => dispatch =>
 	api.user.keepalive(credentials)
 
 
-  export const selectAgente = agente => dispatch =>
+  export const selectAgente = (codiceAgente,desAgente) => dispatch =>
    {
-  	sessionStorage.agente=JSON.stringify(agente);
-  	dispatch(setAgente(agente));
+  	sessionStorage.user=JSON.stringify(user);
+  	dispatch(setAgente(codiceAgente,desAgente));
+  }
+
+  export const selectCliente = user => dispatch =>
+   {
+    sessionStorage.user=JSON.stringify(user);
+    dispatch(setCliente(user));
   }

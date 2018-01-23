@@ -11,7 +11,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import rootReducer from './rootReducer'
-import {userLoggedIn, setAgente} from './actions/auth';
+import {userLoggedIn, setAgente, setCliente} from './actions/auth';
 import registerServiceWorker from './registerServiceWorker';
 import './css/main.css';
 
@@ -24,10 +24,7 @@ if (sessionStorage.user){
 	const user=JSON.parse(sessionStorage.user);
 	store.dispatch(userLoggedIn(user));
 }
-if (sessionStorage.agente){
-	const agente=JSON.parse(sessionStorage.agente);
-	store.dispatch(setAgente(agente));
-}
+
 
 ReactDOM.render(
 	<BrowserRouter>

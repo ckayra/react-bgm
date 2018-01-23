@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import imgSettings from '../../images/settings.png'
 import imgLogoBgm from '../../images/logoBGM-New.png'
 import UserAccount from '../navbar/useraccount'
+import Agente from '../navbar/agente'
+import Cliente from '../navbar/cliente'
 import NavMenu from '../navbar/navmenu'
 import HomePage from './HomePage'
 import AgentiPage from './AgentiPage'
@@ -18,8 +20,9 @@ const MasterPage= ({location}) =>(
   <div className="main-head shadow2">
     <div className="nav-burgermenu">MENU</div>
     <div className="nav-logo"><img src={imgLogoBgm} alt='logo' /></div>
-    <div className="nav-agente"><i className="material-icons">supervisor_account</i>GI.RA RAPPRESENTANZE SRL</div>
-    <div className="nav-cliente"><i className="material-icons">person</i>GLOBE STORE DI ROCCA ANNA E F.LLI SNC (FANTASA WD)</div>
+    <Agente />
+    <Cliente />
+
     <div className="nav-carrello"><i className="material-icons">shopping_cart</i>2 Articoli € 123,45</div>
     <UserAccount   />
     <NavMenu />
@@ -41,7 +44,7 @@ const MasterPage= ({location}) =>(
     </div>
   </div>
   <div className="main-content">
-  CONTENT
+  
   <DefaultHomeRoute location={location} path="/home" exact component={HomePage}/>
   <MasterRoute location={location} path="/agenti" exact component={AgentiPage}/>
   <NotClienteRoute location={location} path="/clienti" exact component={ClientiPage}/>

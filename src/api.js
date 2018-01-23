@@ -19,6 +19,13 @@ export default {
 			.then(res =>  res.data )
 			.catch(err => console.log(err))
 	},
+	clienti:{
+		getClienti:(credentials)=>
+		axios
+			.post(`http://provebgm2.elelco.it/api/clienti`,credentials)
+			.then(res =>  res.data )
+			.catch(err => console.log(err))
+	},
 
 
  /* OFFLINE

@@ -31,8 +31,11 @@ class NavMenu extends React.Component {
    itemsVisualizza = [{"text": "Con Prezzi","url": "visualizzaconprezzi"},
     {"text": "Senza Prezzi","url": "visualizzasenzaprezzi"},
     {"text": "Prezzi Suggeriti","url": "vissualizzaprezzisuggeriti",}]
+
   render(isNavClientiVisible,isNavAgentiVisible,isNavNuovoClienteVisible,isNavClientiEnabled){
+
     return (
+
       <div className="nav-menu">
         <NavBarLink  onClick={this.onItemClick} to="/carrelliaperti" text="Carrelli aperti" />
 
@@ -59,13 +62,13 @@ function mapStateToProps(state){
     isNavClientiVisible: !!(state.user.tipoUtente==='M' || state.user.tipoUtente==='A'),
     isNavAgentiVisible: state.user.tipoUtente==='M',
     isNavNuovoClienteVisible: state.user.tipoUtente==='M' || state.user.tipoUtente==='A',
-    isNavOrdiniEnabled: state.user.codiceCliente!=='',
-    isNavCataloghiEnabled: state.user.codiceCliente!=='',
-    isNavBackOfficeEnabled: state.user.codiceCliente!=='',
-    isNavNuovoClienteEnabled: state.user.codiceAgente!=='',
-    isNavVisualizzaEnabled: state.user.codiceCliente!=='',
-    isNavCarrelloEnabled: !!state.carrello,
-    isNavClientiEnabled: state.user.tipoUtente==='A' || (state.user.tipoUtente==='M' && state.user.codiceAgente!=='')
+    isNavOrdiniEnabled: !state.cliente==={},
+    isNavCataloghiEnabled: !state.cliente==={},
+    isNavBackOfficeEnabled: !state.cliente==={},
+    isNavNuovoClienteEnabled: !state.agente==={},
+    isNavVisualizzaEnabled: !state.cliente==={} ,
+    isNavCarrelloEnabled: !state.carrello==={},
+    isNavClientiEnabled:  state.user.tipoUtente==='A' || (state.user.tipoUtente==='M' && state.agente ),
   }
 }
 
