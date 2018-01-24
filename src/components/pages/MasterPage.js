@@ -25,6 +25,8 @@ const MasterPage= ({location}) =>(
 
     <div className="nav-carrello"><i className="material-icons">shopping_cart</i>2 Articoli € 123,45</div>
     <UserAccount   />
+      <div className="nav-ricerca"><input type="search" placeholder="Cerca"/></div>
+
     <NavMenu />
   </div>
   <div className="main-leftsidebar" >
@@ -35,7 +37,6 @@ const MasterPage= ({location}) =>(
       <div className="nav-condizioni"><img src={imgSettings} alt='settings' /></div>
     </div>
     <div>
-    <div className="nav-ricerca"><input type="search" placeholder="Search"/></div>
       <ul>
       <li>Menu 1</li>
       <li>Menu 1</li>
@@ -44,7 +45,7 @@ const MasterPage= ({location}) =>(
     </div>
   </div>
   <div className="main-content">
-  
+
   <DefaultHomeRoute location={location} path="/home" exact component={HomePage}/>
   <MasterRoute location={location} path="/agenti" exact component={AgentiPage}/>
   <NotClienteRoute location={location} path="/clienti" exact component={ClientiPage}/>

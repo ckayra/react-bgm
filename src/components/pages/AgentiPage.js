@@ -29,8 +29,8 @@ class AgentiPage extends React.Component {
     accessor: 'desAgente',
   }]
 
-	setAgente = (codiceAgente,desAgente)) => {
-		this.props.selectAgente(codiceAgente,desAgente)
+	setAgente = (codiceAgente,desAgente) => {
+		this.props.selectAgente({codiceAgente:codiceAgente,desAgente:desAgente})
 		this.props.history.push("/clienti")
 	}
 
@@ -38,13 +38,13 @@ class AgentiPage extends React.Component {
 
 
 		return (
-			<div>
 				<ReactTable
 		     data={this.state.agenti}
 		     columns={this.columns}
 				  loading={this.state.loading}
 					showPagination= {false}
 					defaultPageSize={this.pageSize}
+
 				 getTdProps={(state, rowInfo, column, instance) => {
 						return {
 							onClick: e =>{
@@ -56,7 +56,6 @@ class AgentiPage extends React.Component {
 				}}
 		   />
 
-			</div>
 		);
 
 	}
