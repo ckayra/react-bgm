@@ -6,11 +6,15 @@ import { logout } from "../../actions/auth";
 import  '../../css/nav-user.css';
 
 class UserAccout extends React.Component {
+
+  dologout = () => this.props.logout(this.props.user).then((res) => { this.props.history.push("/login") })
+
+
   render() {
     const dropUser=(
       <Dropdown className="nav-user"    text={this.props.username}   icon='user circle'>
       <Dropdown.Menu   >
-       <Dropdown.Item text="Logout"  onClick={logout(this.props.user)} />
+       <Dropdown.Item text="Logout"  onClick={this.dologout} />
         <Dropdown.Item text="Impostazioni" />
       </Dropdown.Menu>
       </Dropdown>

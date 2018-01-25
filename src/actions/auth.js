@@ -31,12 +31,13 @@ export const login = credentials => dispatch =>
 	dispatch(userLoggedIn(user));
 });
 
+export const logout = credentials => dispatch =>{
+  sessionStorage.removeItem('user');
+dispatch(userLoggedOut(credentials));
+api.user.logout(credentials)
+}
 
-export const logout = credentials => dispatch =>
-	 api.user.logout(credentials).then(user =>{
-    sessionStorage.removeItem('user');
-    dispatch(userLoggedOut(user));
-});
+
 
 
 export const changepassword = (credentials, newpassword) => dispatch =>
