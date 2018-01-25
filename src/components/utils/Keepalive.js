@@ -5,7 +5,7 @@ import {keepalive}  from "../../actions/auth";
 
 
 class Keepalive extends React.Component {
-	
+
 	componentDidMount(){
 		this.timerID=setInterval(
 		() => this.tick(this.props.user),1000*60*5
@@ -18,11 +18,10 @@ class Keepalive extends React.Component {
 
 	tick = (user) =>{
 			 this.props.keepalive(user).then(() => {
-	  	console.log("keepalive " )
-	  
+
 		})
 }
-	
+
 
 	render() {
 		return <div/>;
@@ -31,7 +30,12 @@ class Keepalive extends React.Component {
 
 Keepalive.propTypes = {
  keepalive: PropTypes.func.isRequired,
-
+ user: PropTypes.shape({
+	 transactId: PropTypes.string.isRequired,
+	 user:PropTypes.string.isRequired,
+	 password:PropTypes.string.isRequired,
+	 lang:PropTypes.string.isRequired,
+ }).isRequired
 };
 
 
@@ -41,7 +45,5 @@ function mapStateToProps(state){
 
   }
 }
- 
+
 export default connect(mapStateToProps, { keepalive })(Keepalive);
-
-

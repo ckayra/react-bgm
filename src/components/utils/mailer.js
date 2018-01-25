@@ -18,7 +18,7 @@ export function sendNewCustomerMail (user){
 	const transport =setup();
 	const email={
 		from,
-		to: to,
+		to,
 		subject: 'Nuova anagrafica cliente',
 		text:'xxxxx'
 

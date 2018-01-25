@@ -1,8 +1,9 @@
 import React  from 'react';
 import { connect } from "react-redux";
 import ReactTable from 'react-table'
-import api from "../../api";
 import 'react-table/react-table.css'
+
+import api from "../../api";
 import { selectAgente } from "../../actions/auth";
 
 class AgentiPage extends React.Component {
@@ -15,7 +16,7 @@ class AgentiPage extends React.Component {
 
 	componentDidMount() {
 		api.agenti.getAgenti(this.props.user).then(agenti => {
-			this.setState({ agenti: agenti ,loading:false, pageSize: agenti.legth})
+			this.setState({ agenti ,loading:false, pageSize: agenti.legth})
 		})
 
 	}
@@ -30,7 +31,7 @@ class AgentiPage extends React.Component {
   }]
 
 	setAgente = (codiceAgente,desAgente) => {
-		this.props.selectAgente({codiceAgente:codiceAgente,desAgente:desAgente})
+		this.props.selectAgente({codiceAgente,desAgente})
 		this.props.history.push("/clienti")
 	}
 
@@ -45,15 +46,12 @@ class AgentiPage extends React.Component {
 					showPagination= {false}
 					defaultPageSize={this.pageSize}
 
-				 getTdProps={(state, rowInfo, column, instance) => {
-						return {
-							onClick: e =>{
-								console.log("Cell - onClick", rowInfo.original.codiceAgente)
+				 getTdProps={(state, rowInfo, column) => ({
+							onClick: () =>{
 								this.setAgente(rowInfo.original.codiceAgente,rowInfo.original.desAgente)
 
 							}
-						};
-				}}
+						})}
 		   />
 
 		);

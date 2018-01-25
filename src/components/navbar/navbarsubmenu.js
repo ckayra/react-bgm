@@ -1,9 +1,7 @@
 import React from 'react'
 import { NavLink  } from 'react-router-dom';
 
-const NavBarSubMenu=(props) =>{
-
-  return(
+const NavBarSubMenu=(props) =>(
     <div className="nav-hassubmenu">
       <span onClick={((e) => props.onClick(e, 'cataloghi'))} className={props.className}>{props.text}</span>
       {props.showSubMenu===props.value ? (
@@ -20,7 +18,6 @@ const NavBarSubMenu=(props) =>{
     }
       </div>
   )
-}
 
 
 

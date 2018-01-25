@@ -17,16 +17,16 @@ class NavBarItem extends React.Component {
     link=(item)=><div key={item.text}><a  href={item.url}>{item.text}</a></div>
     submenu=(item)=>(
       <div className='nav-hassubmenu' key={item.text} >
-      <span onClick={this.onItemClick}>{item.text}<i class="material-icons">arrow_drop_down</i></span>
+      <span onClick={this.onItemClick}>{item.text}<i className="material-icons">arrow_drop_down</i></span>
       {this.state.showSubMenu &&   <NavBarSubMenu className="hidden" items={item.submenu}/>}
       </div>
     )
     render() {
       if (this.props.item.submenu){
         return(this.submenu(this.props.item))
-      }else{
-        return(this.link(this.props.item))
       }
+        return(this.link(this.props.item))
+      
     }
 }
 

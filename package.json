@@ -29,7 +29,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "fixclrf": "npm run lint -- --fix",
+    "fixlint": "npm run lint -- --fix",
     "lessw": "less-watch-compiler",
     "lessbuild": "lessc P:/Users/int93/Desktop/bgm-react/src/css/main.less P:/Users/int93/Desktop/bgm-react/src/css/main.css --source-map=P:/Users/int93/Desktop/bgm-react/src/css/main.css.map"
   },

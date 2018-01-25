@@ -11,7 +11,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import rootReducer from './rootReducer'
-import {userLoggedIn, setAgente, setCliente} from './actions/auth';
+import {userLoggedIn} from './actions/auth';
 import registerServiceWorker from './registerServiceWorker';
 import './css/main.css';
 
