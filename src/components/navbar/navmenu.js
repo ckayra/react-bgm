@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
+import PropTypes from 'prop-types'
 import NavBarLink from './navbarlink'
 import NavBarSubMenu from './navbarsubmenu'
 
@@ -32,8 +33,8 @@ class NavMenu extends React.Component {
     {"text": "Senza Prezzi","url": "visualizzasenzaprezzi"},
     {"text": "Prezzi Suggeriti","url": "vissualizzaprezzisuggeriti",}]
 
-  render(isNavClientiVisible,isNavAgentiVisible,isNavNuovoClienteVisible,isNavClientiEnabled){
-
+  render(){
+console.log('isNavClientiEnabled: ' ,this.props.isNavClientiEnabled)
     return (
 
       <div className="nav-menu">
@@ -57,18 +58,35 @@ class NavMenu extends React.Component {
   }
 }
 
+
+
+NavMenu.propTypes = {
+isNavClientiVisible:PropTypes.bool.isRequired,
+isNavAgentiVisible:PropTypes.bool.isRequired,
+isNavNuovoClienteVisible:PropTypes.bool.isRequired,
+isNavOrdiniEnabled:PropTypes.bool.isRequired,
+isNavCataloghiEnabled:PropTypes.bool.isRequired,
+isNavBackOfficeEnabled:PropTypes.bool.isRequired,
+isNavNuovoClienteEnabled:PropTypes.bool.isRequired,
+isNavVisualizzaEnabled:PropTypes.bool.isRequired,
+isNavCarrelloEnabled:PropTypes.bool.isRequired,
+isNavClientiEnabled:PropTypes.bool.isRequired
+
+};
+
+
 function mapStateToProps(state){
   return{
     isNavClientiVisible: !!(state.user.tipoUtente==='M' || state.user.tipoUtente==='A'),
     isNavAgentiVisible: state.user.tipoUtente==='M',
     isNavNuovoClienteVisible: state.user.tipoUtente==='M' || state.user.tipoUtente==='A',
-    isNavOrdiniEnabled: !state.cliente==={},
-    isNavCataloghiEnabled: !state.cliente==={},
-    isNavBackOfficeEnabled: !state.cliente==={},
-    isNavNuovoClienteEnabled: !state.agente==={},
-    isNavVisualizzaEnabled: !state.cliente==={} ,
-    isNavCarrelloEnabled: !state.carrello==={},
-    isNavClientiEnabled:  state.user.tipoUtente==='A' || (state.user.tipoUtente==='M' && state.agente ),
+    isNavOrdiniEnabled: state.user.codiceCliente!=='',
+    isNavCataloghiEnabled: state.user.codiceCliente!=='',
+    isNavBackOfficeEnabled: state.user.codiceCliente!=='',
+    isNavNuovoClienteEnabled: state.user.codiceAgente!=='',
+    isNavVisualizzaEnabled: state.user.codiceCliente!=='' ,
+    isNavCarrelloEnabled: state.carrello!=={},
+    isNavClientiEnabled:  state.user.tipoUtente==='A' || (state.user.tipoUtente==='M' && state.user.codiceAgente!=='' ),
   }
 }
 

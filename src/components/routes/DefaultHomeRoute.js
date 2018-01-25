@@ -34,6 +34,8 @@ const DefaultHomeRoute = ({isAuthenticated,user,component: Component, ...rest}) 
 	return (<Route {...rest} render={() =>  <Redirect to={page()} />} />)
 }
 
+
+
 DefaultHomeRoute.propTypes={
 	component: PropTypes.func.isRequired,
 	isAuthenticated: PropTypes.bool.isRequired,
@@ -41,8 +43,8 @@ DefaultHomeRoute.propTypes={
 		transactId: PropTypes.string.isRequired,
 		user:PropTypes.string.isRequired,
 		password:PropTypes.string.isRequired,
-		lang:PropTypes.string.isRequired,
-	})
+		lang:PropTypes.string.isRequired
+	}).isRequired
 }
 
 function mapStateToProps(state){

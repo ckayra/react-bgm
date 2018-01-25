@@ -65,9 +65,9 @@ export const changepassword = (credentials, newpassword) => dispatch =>
   export const selectCliente = cliente => dispatch =>
    {
     dispatch(setCodCliente(cliente.codiceCliente));
-    dispatch(setDesCliente(cliente.desCliente));
+    dispatch(setDesCliente(cliente.ragSociale12));
     const user=JSON.parse(sessionStorage.user);
     user.codiceCliente=cliente.codiceCliente;
-    user.desCliente=cliente.desCliente;
+    user.desCliente=cliente.ragSociale12;
     sessionStorage.user=JSON.stringify(user);
   }

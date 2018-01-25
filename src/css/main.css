@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import "normalize.css";
-@import "tables.css";
 html,
 body,
 #root {
@@ -31,6 +30,7 @@ body,
 }
 .main-content {
   overflow: hidden;
+  padding: 20px;
 }
 .main-leftsidebar {
   background-color: #607d8b;
@@ -334,6 +334,48 @@ body,
 }
 .shadow5 {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+.ReactTable {
+  /* height: calc(100% - 50px)
+  padding-top:30px; */
+  height: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: auto;
+  background-color: white;
+}
+.ReactTable .rt-th {
+  background-color: #607d8b;
+  color: white;
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+  text-align: left;
+}
+.ReactTable .rt-tr-group {
+  cursor: pointer;
+}
+.ReactTable .rt-tr-group:hover {
+  background-color: #607d8b;
+  color: white;
+}
+.ReactTable .rt-thead .rt-th.-sort-desc,
+.ReactTable .rt-thead .rt-td.-sort-desc {
+  webkit-box-shadow: inset 0 -3px 0 0 white;
+  box-shadow: inset 0 -3px 0 0 white;
+}
+.ReactTable .rt-thead .rt-th.-sort-asc,
+.ReactTable .rt-thead .rt-td.-sort-asc {
+  webkit-box-shadow: inset 0 3px 0 0 white;
+  box-shadow: inset 0 3px 0 0 white;
+}
+.ReactTable .rt-tbody {
+  display: block;
+}
+.icona-scaduto {
+  color: red!important;
+}
+.ReactTable .rt-tr-group {
+  height: 43px;
 }
 i.icon {
   font-size: 22px;

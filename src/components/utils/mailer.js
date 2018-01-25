@@ -20,7 +20,7 @@ export function sendNewCustomerMail (user){
 		from,
 		to,
 		subject: 'Nuova anagrafica cliente',
-		text:'xxxxx'
+		text:{user}
 
 	}
 	transport.sendMail(email);

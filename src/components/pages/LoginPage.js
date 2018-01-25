@@ -40,7 +40,7 @@ LoginPage.propTypes = {
  	 user:PropTypes.string.isRequired,
  	 password:PropTypes.string.isRequired,
  	 lang:PropTypes.string.isRequired,
-  })
+ }).isRequired
 };
 
 function mapStateToProps(state){

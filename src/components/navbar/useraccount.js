@@ -7,8 +7,8 @@ import  '../../css/nav-user.css';
 
 class UserAccout extends React.Component {
 
-  dologout = () => this.props.logout(this.props.user).then((res) => { this.props.history.push("/login") })
-
+  // dologout = () => this.props.logout(this.props.user).then(() => { this.props.history.push("/login") })
+  dologout = () => this.props.logout(this.props.user)
 
   render() {
     const dropUser=(
@@ -40,8 +40,13 @@ UserAccout.propTypes = {
   //   push: PropTypes.func.isRequired
   // }).isRequired,
   username: PropTypes.string.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+   transactId: PropTypes.string.isRequired,
+   user:PropTypes.string.isRequired,
+   password:PropTypes.string.isRequired,
+   lang:PropTypes.string.isRequired,
+ }).isRequired,
 };
 
 function mapStateToProps(state){
