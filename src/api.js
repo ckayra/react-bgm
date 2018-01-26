@@ -1,28 +1,36 @@
 import axios from 'axios'
 
+ let url='http://provebgm2.elelco.it/api/'
 export default {
 
 	user:{
-		login:(credentials) =>  axios.post('http://provebgm2.elelco.it/api/login', credentials).then(res => res.data.user),
+		login:(credentials) =>  axios.post(url + 'login', credentials).then(res => res.data.user),
 
-		logout:(credentials) => axios.post('http://provebgm2.elelco.it/api/logout',credentials).then(res => res.data.user),
+		logout:(credentials) => axios.post(url + 'logout',credentials).then(res => res.data.user),
 
-		changepassword:(credentials, newpassword) => axios.post('http://provebgm2.elelco.it/api/changepassword', {cred: credentials, newpassword}).then(
+		changepassword:(credentials, newpassword) => axios.post(url + 'changepassword', {cred: credentials, newpassword}).then(
 			res => res.data.user
 		),
-		keepalive:(credentials) => axios.post('http://localhost:40049/api/keepalive',credentials),
+		keepalive:(credentials) => axios.post(url + 'keepalive',credentials),
 	},
 	agenti:{
 		getAgenti:(credentials)=>
 		axios
-			.post(`http://provebgm2.elelco.it/api/agenti`,credentials)
+			.post(url + `agenti`,credentials)
 			.then(res =>  res.data )
 			.catch(err => console.log(err))
 	},
 	clienti:{
 		getClienti:(credentials)=>
 		axios
-			.post(`http://provebgm2.elelco.it/api/clienti`,credentials)
+			.post(url + `clienti`,credentials)
+			.then(res =>  res.data )
+			.catch(err => console.log(err))
+	},
+	daticontabili:{
+		getClienti:(credentials)=>
+		axios
+			.post(url + `daticontabili`,credentials)
 			.then(res =>  res.data )
 			.catch(err => console.log(err))
 	},

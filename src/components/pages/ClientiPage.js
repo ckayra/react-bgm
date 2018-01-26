@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import PropTypes from 'prop-types'
+import $ from 'jquery';
 import api from "../../api";
 import { selectCliente } from "../../actions/auth";
 
@@ -25,6 +26,22 @@ class ClientiPage extends React.Component {
 
 	}
 
+	handleSearch = (event) => {
+		var filter = $('.search').val().toUpperCase();
+		 if (filter && filter!='') {
+			 $('.ReactTable').find(".rt-td:not(:contains(" + filter + "))").parent().parent().slideUp();
+
+		$('.ReactTable').find(".rt-td:contains(" + filter + ")").parent().parent().slideDown();
+} else {
+	console.log('nofilter')
+
+      $('.ReactTable').find(".rt-tr-group").slideDown();
+    }
+	  if(event.key === 'Enter'){
+	    console.log('enter press here! ')
+	  }
+	}
+
 	setCliente = (codiceCliente,ragSociale12) => {
 		this.props.selectCliente({codiceCliente,ragSociale12})
 		this.props.history.push("/daticontabili")
@@ -43,6 +60,11 @@ class ClientiPage extends React.Component {
 	{
     Header: 'Ragione Sociale',
     accessor: 'ragSociale12',
+		filterAll:true
+		// defaultFilterMethod: (filter, row, column) => {
+		// 		const id = filter.pivotId || filter.id
+		// 		return row["codiceCliente"] !== undefined ? String(row["codiceCliente"]).startsWith(filter.value) || String(row["ragSociale12"]).startsWith(filter.value) : true
+		// 	}
   },
 	{
 		Header: 'CAP',
@@ -67,7 +89,7 @@ class ClientiPage extends React.Component {
 									style={{ textAlign:'center'
 									}}
 								>
-										{row.value==='S' ? <i class="material-icons icona-scaduto">report_problem</i> : '' }
+										{row.value==='S' ? <i className="material-icons icona-scaduto">report_problem</i> : '' }
 								</div>
 						)
 	},
@@ -90,13 +112,24 @@ class ClientiPage extends React.Component {
 
 	render() {
 		return (
-				<ReactTable  style={this.divStyle} className='shadow1'
+			<div>
+			 <input className="search" placeholder="Search" onChange={this.handleSearch} onKeyUp={this.handleSearch}/>
+				<ReactTable  style={{maxWidth:'1400px'}} className='shadow1'
 		     data={this.state.clienti}
 		     columns={this.columns}
 				  loading={this.state.loading}
 					showPagination= {false}
 					defaultPageSize={this.state.pageSize}
 					pageSize={this.state.pageSize}
+					// filterable
+defaultFilterMethod={(filter, data) =>{
+	return data.filter(({codiceCliente,ragSociale12,cap,localita,pivaCEE}) => codiceCliente.indexOf(filter.value.toUpperCase()) > -1 ||  ragSociale12.indexOf(filter.value.toUpperCase()) > -1 ||  cap.indexOf(filter.value.toUpperCase()) > -1 ||  localita.indexOf(filter.value.toUpperCase()) > -1 || pivaCEE.indexOf(filter.value.toUpperCase()) > -1);
+
+}
+}
+
+
+
 					defaultSorted={[
 					{
 						id: "fScaduto",
@@ -106,6 +139,7 @@ class ClientiPage extends React.Component {
 						id: "ragSociale12",
 					}
 				]}
+
 				 getTdProps={(state, rowInfo) => ({
 							onClick: () =>{
 								this.setCliente(rowInfo.original.codiceCliente,rowInfo.original.ragSociale12)
@@ -113,7 +147,7 @@ class ClientiPage extends React.Component {
 							}
 						})}
 		   />
-
+</div>
 		);
 
 	}

@@ -10,7 +10,6 @@ class NavBarItem extends React.Component {
         }
     }
      onItemClick = () => {
-              console.log('clicked');
               this.setState({showSubMenu: !this.state.showSubMenu})
     }
 
@@ -26,7 +25,7 @@ class NavBarItem extends React.Component {
         return(this.submenu(this.props.item))
       }
         return(this.link(this.props.item))
-      
+
     }
 }
 

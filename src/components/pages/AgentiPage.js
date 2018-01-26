@@ -1,10 +1,10 @@
 import React  from 'react';
 import { connect } from "react-redux";
-import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import PropTypes from 'prop-types'
 import api from "../../api";
 import { selectAgente } from "../../actions/auth";
+import Table from '../table/table.js'
 
 class AgentiPage extends React.Component {
 	state={
@@ -13,69 +13,31 @@ class AgentiPage extends React.Component {
 		pageSize:10
 	}
 
-
 	componentDidMount() {
 		api.agenti.getAgenti(this.props.user).then(agenti => {
-
 			this.setState({ agenti ,loading:false, pageSize: agenti.length})
 		})
-
 	}
 
-
-
-	setAgente = (codiceAgente,desAgente) => {
-		this.props.selectAgente({codiceAgente,desAgente})
+	setAgente = rowdata => {
+		this.props.selectAgente(rowdata)
 		this.props.history.push("/clienti")
 	}
 
-	divStyle = {
-	 maxWidth:'700px',
-
- };
-
-
-	columns = [{
-	 Header: 'Cod. Agente',
-	 accessor: 'codiceAgente',
-	  maxWidth: 100,
-		Cell: row => (
-								<div
-									style={{ textAlign:'center'
-									}}
-								>{row.value}</div>
-						)
-
- }, {
-	 Header: 'Ragione Sociale',
-	 accessor: 'desAgente',
-
- }]
-
-
+	columns = [
+		{ title: 'Cod. Agente',field: 'codiceAgente',	maxWidth: 100,align:'right'},
+ 		{ title: 'Ragione Sociale',	field: 'desAgente' }
+]
 
 	render() {
-
-
 		return (
-				<ReactTable style={this.divStyle} className='shadow1'
-		     data={this.state.agenti}
-		     columns={this.columns}
-				  loading={this.state.loading}
-					showPagination= {false}
-					defaultPageSize={this.state.pageSize}
-					pageSize={this.state.pageSize}
-					noDataText="Nessun record trovato"
-				 getTdProps={(state, rowInfo) => ({
-							onClick: () =>{
-								this.setAgente(rowInfo.original.codiceAgente,rowInfo.original.desAgente)
-							}
-
-						})}
-		   />
-
+			<Table
+				data={this.state.agenti}
+				columns={this.columns}
+				loading={this.state.loading}
+				pageSize={this.state.pageSize}
+				onRowClick={this.setAgente}/>
 		);
-
 	}
 }
 
