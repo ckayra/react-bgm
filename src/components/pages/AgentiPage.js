@@ -36,7 +36,8 @@ class AgentiPage extends React.Component {
 				columns={this.columns}
 				loading={this.state.loading}
 				pageSize={this.state.pageSize}
-				onRowClick={this.setAgente}/>
+				onRowClick={this.setAgente}
+				style={{maxWidth:'700px'}}/>
 		);
 	}
 }

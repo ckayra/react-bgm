@@ -85,7 +85,7 @@ function mapStateToProps(state){
     isNavBackOfficeEnabled: state.user.codiceCliente!=='',
     isNavNuovoClienteEnabled: state.user.codiceAgente!=='',
     isNavVisualizzaEnabled: state.user.codiceCliente!=='' ,
-    isNavCarrelloEnabled: state.carrello!=={},
+    isNavCarrelloEnabled: state.carrello!==undefined,
     isNavClientiEnabled:  state.user.tipoUtente==='A' || (state.user.tipoUtente==='M' && state.user.codiceAgente!=='' ),
   }
 }

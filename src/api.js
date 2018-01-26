@@ -25,15 +25,14 @@ export default {
 		axios
 			.post(url + `clienti`,credentials)
 			.then(res =>  res.data )
-			.catch(err => console.log(err))
-	},
-	daticontabili:{
-		getClienti:(credentials)=>
+			.catch(err => console.log(err)),
+    getDatiContabili:(credentials)=>
 		axios
 			.post(url + `daticontabili`,credentials)
 			.then(res =>  res.data )
 			.catch(err => console.log(err))
 	},
+
 
 
  /* OFFLINE

@@ -56,9 +56,14 @@ export const changepassword = (credentials, newpassword) => dispatch =>
    {
   	dispatch(setCodAgente(agente.codiceAgente));
     dispatch(setDesAgente(agente.desAgente));
+    dispatch(setCodCliente(''));
+    dispatch(setDesCliente(''));
     	const user=JSON.parse(sessionStorage.user);
       user.codiceAgente=agente.codiceAgente;
       user.desAgente=agente.desAgente;
+      //reset Cliente
+      user.codiceCliente=''
+      user.desCliente=''
       sessionStorage.user=JSON.stringify(user);
   }
 
