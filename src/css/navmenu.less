@@ -1,26 +1,101 @@
 @import "colors.less";
 
+.main-head .nav-menu{
+	font-family:'Oswald', sans-serif;
+	font-size:18px;
+	justify-content: left!important;
+	white-space: nowrap;
+}
+
+.main-head .nav-menu{
+  display:none;
+   @media @medium {
+	display: flex;
+	display: -webkit-flex;
+
+   }
+}
+
+.main-head .nav-menu > .nav-link{
+	justify-content: center;
+	flex-grow:1;
+	text-align: center;
+	border-bottom: 3px solid @primary-bg;
+	padding-top:9px;
+	padding-bottom:9px;
+	color:@primary;
+	text-align :center;
+	min-width:60px;
+}
+
+.main-head .nav-menu > .nav-link:not(.nav-disabled):hover{
+	border-bottom: 3px solid @primary;
+	cursor:pointer;
+}
+// .nav-menu > div:not(.nav-submenu):not(.nav-disabled):hover ,.nav-submenu >div:hover{
+// 	border-bottom: 3px solid @primary;
+// 	cursor:pointer;
+// }
+// .nav-submenu >div{
+// 	border-bottom: 3px solid @primary-bg;
+// }
+
+.main-head .nav-menu > .nav-disabled{
+	cursor: not-allowed;
+	pointer-events: none;
+	color:lightgrey;
+}
+
+.main-head .nav-menu > .active {
+	border-bottom: 3px solid @primary;
+}
+
+.nav-submenu, .nav-submenu div{
+	padding-right:5px!important;
+}
+
+
+
+.nav-menu a{
+	color:@primary;
+}
+.nav-menu a:hover{
+	color:@primary;
+}
+
+.nav-submenu a{
+	width :auto;
+}
+
 .nav-hassubmenu{
-   display: block!important;
-  text-align:center;
+	display: block!important;
+	text-align:center;
+}
+.nav-hassubmenu:not(.nav-disabled):hover,nav-menu:not(.nav-disabled):hover{
+	cursor:pointer;
 }
 .nav-hassubmenu span{
-  display:flex;
-  justify-content: center;
+	display:flex;
+	justify-content: center;
 }
 .nav-submenu{
-  position: absolute;
-  display: block!important;
-  background-color: @primary-bg;
-  color:@primary;
-  padding:5px;
+	position: absolute;
+	display: block!important;
+	background-color: @primary-bg;
+	color:@primary;
+	margin-top:12px;
+	padding:5px;
+	-webkit-transition: all 0.5s,z-index 0.9s;
+	-o-transition: all 0.5s,z-index 0.9s;
+	transition: all 0.5s,z-index 0.9s;
 }
 
 .nav-submenu div{
-  justify-content: left !important;
+	justify-content: left !important;
+	padding:5px;
 }
 
 .nav-hassubmenu span::after {
-    content: "\25be";
-    color: white;
+	content: "\25be";
+	color: white;
 }

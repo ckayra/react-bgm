@@ -30,7 +30,11 @@ body,
 }
 .main-content {
   overflow: hidden;
-  padding: 20px;
+}
+@media only screen and (min-width: 901px)  {
+  .main-content {
+    padding: 20px;
+  }
 }
 .main-leftsidebar {
   background-color: #607d8b;
@@ -89,32 +93,12 @@ body,
   align-items: center;
   justify-content: center;
 }
-.main-head .nav-menu div {
-  min-width: 60px;
-  padding-right: 30px;
-}
-.nav-submenu,
-.nav-submenu div {
-  padding-right: 5px!important;
-}
-.main-head .nav-menu div {
-  justify-content: center;
-}
 .main-head .nav-logo {
   z-index: 2;
   display: none;
 }
 @media only screen and (min-width: 751px)  {
   .main-head .nav-logo {
-    display: flex;
-    display: -webkit-flex;
-  }
-}
-.main-head .nav-menu {
-  display: none;
-}
-@media only screen and (min-width: 751px)  {
-  .main-head .nav-menu {
     display: flex;
     display: -webkit-flex;
   }
@@ -172,42 +156,6 @@ body,
   -webkit-transform: skew(-20deg);
   -moz-transform: skew(-20deg);
 }
-.nav-menu {
-  font-family: 'Oswald', sans-serif;
-  font-size: 18px;
-  justify-content: left!important;
-}
-.nav-menu a,
-.nav-menu span {
-  border-bottom: none;
-  border-bottom: 3px solid #607d8b;
-  padding-top: 9px;
-  padding-bottom: 9px;
-  color: white;
-}
-.nav-menu a {
-  width: 100%;
-  text-align: center;
-}
-.nav-submenu a {
-  width: auto;
-}
-.nav-menu a:hover,
-.nav-menu span:hover {
-  border-bottom: 3px solid white;
-}
-.nav-menu a.active,
-.nav-menu span:active {
-  border-bottom: 3px solid white;
-}
-.nav-menu a:visited {
-  color: white;
-}
-.nav-menu a.nav-disabled,
-.nav-menu span.nav-disabled {
-  pointer-events: none;
-  color: lightgrey;
-}
 .nav-agente,
 .nav-cliente {
   font-size: 12px;
@@ -244,11 +192,11 @@ body,
   -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
   -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
   box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-  width: 130px;
-  padding-left: 32px;
   color: #000;
-  background-color: #fff;
+  background: #fff;
   cursor: auto;
+  padding-left: 5px;
+  width: 157px;
 }
 .nav-ricerca input:-moz-placeholder {
   color: transparent;
@@ -256,9 +204,63 @@ body,
 .nav-ricerca input::-webkit-input-placeholder {
   color: transparent;
 }
+.main-head .nav-menu {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  justify-content: left!important;
+  white-space: nowrap;
+}
+.main-head .nav-menu {
+  display: none;
+}
+@media only screen and (min-width: 751px)  {
+  .main-head .nav-menu {
+    display: flex;
+    display: -webkit-flex;
+  }
+}
+.main-head .nav-menu > .nav-link {
+  justify-content: center;
+  flex-grow: 1;
+  border-bottom: 3px solid #607d8b;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  color: white;
+  text-align: center;
+  min-width: 60px;
+}
+.main-head .nav-menu > .nav-link:not(.nav-disabled):hover {
+  border-bottom: 3px solid white;
+  cursor: pointer;
+}
+.main-head .nav-menu > .nav-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: lightgrey;
+}
+.main-head .nav-menu > .active {
+  border-bottom: 3px solid white;
+}
+.nav-submenu,
+.nav-submenu div {
+  padding-right: 5px!important;
+}
+.nav-menu a {
+  color: white;
+}
+.nav-menu a:hover {
+  color: white;
+}
+.nav-submenu a {
+  width: auto;
+}
 .nav-hassubmenu {
   display: block!important;
   text-align: center;
+}
+.nav-hassubmenu:not(.nav-disabled):hover,
+nav-menu:not(.nav-disabled):hover {
+  cursor: pointer;
 }
 .nav-hassubmenu span {
   display: flex;
@@ -269,10 +271,15 @@ body,
   display: block!important;
   background-color: #607d8b;
   color: white;
+  margin-top: 12px;
   padding: 5px;
+  -webkit-transition: all 0.5s, z-index 0.9s;
+  -o-transition: all 0.5s, z-index 0.9s;
+  transition: all 0.5s, z-index 0.9s;
 }
 .nav-submenu div {
   justify-content: left !important;
+  padding: 5px;
 }
 .nav-hassubmenu span::after {
   content: "\25be";
@@ -365,13 +372,13 @@ body,
 }
 .ReactTable .rt-thead .rt-th.-sort-desc,
 .ReactTable .rt-thead .rt-td.-sort-desc {
-  webkit-box-shadow: inset 0 -3px 0 0 white;
-  box-shadow: inset 0 -3px 0 0 white;
+  webkit-box-shadow: inset 0 -3px 0 0 white !important;
+  box-shadow: inset 0 -3px 0 0 white !important;
 }
 .ReactTable .rt-thead .rt-th.-sort-asc,
 .ReactTable .rt-thead .rt-td.-sort-asc {
-  webkit-box-shadow: inset 0 3px 0 0 white;
-  box-shadow: inset 0 3px 0 0 white;
+  webkit-box-shadow: inset 0 3px 0 0 white !important;
+  box-shadow: inset 0 3px 0 0 white !important;
 }
 .ReactTable .rt-tbody {
   display: block;
@@ -385,14 +392,11 @@ body,
 input[type="search"].search {
   background: white url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
   border: solid 1px #ccc;
-  padding: 6px 10px 6px 32px;
+  padding: 6px 22px 6px 32px;
   width: 130px;
   /* padding-left: 32px; */
   cursor: pointer;
   border-radius: 0.5em;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
   /* margin-top: 5px; */
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
@@ -400,9 +404,85 @@ input[type="search"].search {
   font-size: 100%;
   outline: none;
 }
+.search.search-input:focus {
+  padding-left: 5px;
+  background: white;
+  width: 157px;
+}
+.searchinput-container {
+  position: relative;
+  height: 35px;
+}
+.searchinput-input {
+  padding: 6px 12px;
+  border: 1px solid #c7c7c7;
+  color: #555;
+}
+.searchinput-clear {
+  position: relative;
+  right: -170px;
+  top: -26px;
+  font-size: 16px;
+  color: #777;
+  cursor: pointer;
+}
+.centerv {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.main-content > div {
+  height: 100%;
+}
+.divDatiContabili {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 2fr  1fr;
+  grid-gap: 15px;
+  padding: 15px;
+  background-color: #607d8b;
+  color: white;
+}
+@media only screen and (min-width: 751px)  {
+  .divDatiContabili {
+    grid-template-columns: 2fr  1fr  2fr  1fr;
+  }
+}
+.etichetta {
+  grid-column: 1;
+  justify-self: start;
+}
+.valore {
+  grid-column: 2;
+  justify-self: end;
+}
+.col2 {
+  grid-column: 1;
+}
+@media only screen and (min-width: 751px)  {
+  .col2 {
+    grid-column: 3;
+  }
+}
+.col3 {
+  grid-column: 2;
+}
+@media only screen and (min-width: 751px)  {
+  .col3 {
+    grid-column: 4;
+  }
+}
 i.icon {
-  font-size: 22px;
+  font-size: 22px!important;
 }
 .hover:hover {
   cursor: pointer;
 }
+/*# sourceMappingURL=main.css.map */

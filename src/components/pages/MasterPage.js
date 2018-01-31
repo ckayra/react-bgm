@@ -10,6 +10,7 @@ import HomePage from './HomePage'
 import AgentiPage from './AgentiPage'
 import DatiContabiliPage from './DatiContabiliPage'
 import ClientiPage from './ClientiPage'
+import ClientePage from './ClientePage'
 import UserRoute from '../routes/UserRoute'
 import MasterRoute from '../routes/MasterRoute'
 import NotClienteRoute from '../routes/NotClienteRoute'
@@ -49,7 +50,9 @@ const MasterPage= ({location}) =>(
   <DefaultHomeRoute location={location} path="/home" exact component={HomePage}/>
   <MasterRoute location={location} path="/agenti" exact component={AgentiPage}/>
   <NotClienteRoute location={location} path="/clienti" exact component={ClientiPage}/>
-  <UserRoute location={location} path='/daticontabili' exact component={DatiContabiliPage}/>
+  <UserRoute location={location} path='/daticontabili'  component={DatiContabiliPage}/>
+    <NotClienteRoute location={location} path="/cliente" exact component={ClientePage}/>
+
   </div>
   <div className="main-footer">FOOTER</div>
 </div>

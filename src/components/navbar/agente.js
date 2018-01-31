@@ -6,8 +6,9 @@ const Agente = (props ) => (
     props.descrizioneAgente==='' ? <div /> :<div className="nav-agente"><i className="material-icons">supervisor_account</i>{props.descrizioneAgente}</div>
 );
 
-
-
+Agente.defaultProps={
+  descrizioneAgente: '',
+}
 
 Agente.propTypes = {
   descrizioneAgente: PropTypes.string,

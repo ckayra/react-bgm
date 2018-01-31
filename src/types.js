@@ -4,3 +4,5 @@ export const SET_CODAGENTE = "SET_CODAGENTE";
 export const SET_CODCLIENTE = "SET_CODCLIENTE";
 export const SET_DESAGENTE = "SET_DESAGENTE";
 export const SET_DESCLIENTE = "SET_DESCLIENTE";
+export const SET_LANG = "SET_LANG";
+export const SESSION_TIMEOUT = "SESSION_TIMEOUT";

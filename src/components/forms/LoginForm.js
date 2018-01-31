@@ -1,7 +1,6 @@
 import React  from 'react';
 import {Form,Button, Message, Icon} from 'semantic-ui-react';
 import PropTypes from 'prop-types'
-import {FormattedMessage} from 'react-intl'
 import InlineError from '../messages/InlineError';
 
 class LoginForm extends React.Component{
@@ -46,21 +45,23 @@ class LoginForm extends React.Component{
 		const {data,errors, loading}=this.state;
 		return(
 			<Form onSubmit={this.onSubmit} loading={loading}>
-			<Form.Field error={!!errors && !!errors.user}>
-				<label htmlFor='user'><FormattedMessage id="user" defaultMessage="user"/></label>
-				<input type='text' id='user' name='user' placeholder='insert user' value={data.user} onChange={this.onChange} />
+				<Form.Field error={!!errors && !!errors.user}>
+					<label htmlFor='user'>User
+					<input type='text' id='user' name='user' placeholder='insert user' value={data.user} onChange={this.onChange} />
+</label>
 			</Form.Field>
-			{errors && errors.user && <InlineError text={errors.user}/>}
-			<Form.Field error={!!errors && !!errors.password}>
-				<label htmlFor='password'>Password</label>
-				<input type='password' id='password' name='password' placeholder='insert password' value={data.password} onChange={this.onChange} />
-			</Form.Field>
-			{errors && errors.password && <InlineError text={errors.password}/>}
+				{errors && errors.user && <InlineError text={errors.user}/>}
+				<Form.Field error={!!errors && !!errors.password}>
+					<label htmlFor='password'>Password
+						<input type='password' id='password' name='password' placeholder='insert password' value={data.password} onChange={this.onChange} />
+					</label>
+				</Form.Field>
+				{errors && errors.password && <InlineError text={errors.password}/>}
 				{errors && errors.global && <Message negative icon>
-					 <Icon name="warning sign" />
-					 <Message.Content>
-					<Message.Header>Si è verificato un errore</Message.Header>
-					<p>{errors.global}</p>
+					<Icon name="warning sign" />
+					<Message.Content>
+						<Message.Header>Si è verificato un errore</Message.Header>
+						<p>{errors.global}</p>
 					</Message.Content>
 				</Message>}
 				<Button primary>Login</Button>

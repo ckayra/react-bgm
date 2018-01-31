@@ -6,11 +6,12 @@ import PropTypes from "prop-types";
 class Table extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: this.props.data,
       filteredData: this.props.data,
-      pageSize: this.props.pageSize
+      pageSize: this.props.pageSize,
+      showClearInput: false,
+      loading:true
     };
   }
   componentDidMount() {
@@ -18,11 +19,15 @@ class Table extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data !== this.props.data) {
-      this.setState({ data: nextProps.data });
-      this.setState({ filteredData: nextProps.data });
-      this.setState({ pageSize: nextProps.data.length });
+    if (nextProps.data !== this.state.data) {
+      // data from api
+      this.setState({
+        data: nextProps.data,
+        filteredData: nextProps.data,
+        pageSize: nextProps.data.length
+      });
     }
+    if (nextProps.loading !== this.state.loading) this.setState({loading:nextProps.loading})
   }
 
   getCell = (value, { col }) => {
@@ -34,7 +39,7 @@ class Table extends React.Component {
 
   getColumns = columns =>
     columns.map(col => {
-      const retcol = { Header: col.title, accessor: col.field };
+      const retcol = { Header: col.title, accessor: col.field,id:col.id };
       if (col.align) {
         retcol.Cell = row => (
           <div style={{ textAlign: col.align }}>
@@ -42,8 +47,8 @@ class Table extends React.Component {
           </div>
         );
       }
-      //  col.maxWidth && (retcol.maxWidth = col.maxWidth);
-      col.maxWidth ? (retcol.maxWidth = col.maxWidth) : (retcol.maxWidth = 0);
+
+      retcol.maxWidth = col.maxWidth ? col.maxWidth : undefined;
       return retcol;
     });
 
@@ -59,17 +64,6 @@ class Table extends React.Component {
     const size = this.state.data.length;
     const filteredList = [];
     for (let index = 0; index < size; index += 1) {
-      // -      $.each(this.state.data[index],function(key,value){
-      // -        v+=value;
-      // -     });
-      // for (
-      //   let i = 0;
-      //   i < Object.values(this.state.data[index]).length;
-      //   i += 1
-      // ) {
-      //   console.log(this.state.data[index]);
-      //   v += this.state.data[index][i];
-      // }
       v = Object.values(this.state.data[index]).join(",");
       if (v.toString().indexOf(filter) !== -1) {
         filteredList.push(this.state.data[index]);
@@ -80,38 +74,59 @@ class Table extends React.Component {
       filteredData: filteredList,
       pageSize: filteredList.length
     });
+
+    this.setState ({showClearInput:filter!==''})
   };
+
   timeout = null;
-  // updateInputValue = evt => {
-  //   this.setState(
-  //     {
-  //       filter: evt.target.value.toUpperCase()
-  //     },
-  //     this.handleSearch
-  //   );
-  // };
-  handleKey = () => {
+
+  handleKey = (e) => {
     clearTimeout(this.timeout);
+    if(e.keyCode === 46) {
+      this.clearFilter()
+   } else{
     this.timeout = setTimeout(() => {
       this.handleSearch();
     }, 300);
+  }
   };
+
+  showDeleteButton = () => {
+    this.setState({ showClearInput: this.searchInput.value !== "" });
+  };
+
+  clearFilter=()=>{
+    this.searchInput.value='';
+      this.searchInput.focus();
+    this.setState({
+      showClearInput: false,
+      filteredData: this.state.data,
+      pageSize: this.state.data.length
+    });
+  }
+
+
 
   render() {
     return (
       <div className="Reactable-container " style={this.props.style}>
         {this.props.filter && (
-          <div>
+          <div className="searchinput-container ">
             <input
               value={this.state.inputValue}
               ref={input => {
                 this.searchInput = input;
               }}
-              className="search"
+              className="search search-input"
               type="search"
-              onKeyUp={this.handleKey}
+               onKeyUp={this.handleKey}
               // onChange={this.updateInputValue}
+              // onMouseOver={this.showDeleteButton}
+              // onFocus={this.showDeleteButton}
+              // onMouseOut={this.setState({ showClearInput: false })}
+              // onBlur={this.setState({ showClearInput: false })}
             />
+          {this.state.showClearInput && <div className="searchinput-clear" onKeyUp='x' tabIndex="-1" role='button'  disabled = {(this.props.loading)? "disabled" : ""} onClick={() => {this.clearFilter()}}>x</div>}
           </div>
         )}
         <ReactTable
@@ -125,9 +140,9 @@ class Table extends React.Component {
           pageSize={this.state.pageSize}
           noDataText="Nessun record trovato"
           defaultSorted={this.props.sort && this.getSort(this.props.sort)}
-          getTdProps={(state, rowInfo) => ({
+          getTdProps={(state, rowInfo, column) => ({
             onClick: () => {
-              this.props.onRowClick(rowInfo.original);
+              this.props.onRowClick(rowInfo.original,column);
             }
           })}
         />
@@ -145,22 +160,27 @@ Table.defaultProps = {
   pageSize: 30
 };
 
+Table.defaultProps = {
+  data:[]
+};
+
+
 Table.propTypes = {
   onRowClick: PropTypes.func,
-  data: PropTypes.object.isRequired,
-  sort: PropTypes.shape({
+  data: PropTypes.arrayOf(PropTypes.object),
+  sort: PropTypes.arrayOf(PropTypes.shape({
     field: PropTypes.string.isRequired,
     order: PropTypes.string
-  }),
+  })),
   loading: PropTypes.bool,
-  columns: PropTypes.shape({
+  columns: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     field: PropTypes.string.isRequired,
     maxWidth: PropTypes.number,
     align: PropTypes.string,
     render: PropTypes.func
-  }).isRequired,
-  filter: PropTypes.string,
+  })).isRequired,
+  filter: PropTypes.bool,
   style: PropTypes.object,
   pageSize: PropTypes.number
 };

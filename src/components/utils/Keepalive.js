@@ -17,7 +17,7 @@ class Keepalive extends React.Component {
 	}
 
 	tick = (user) =>{
-			 this.props.keepalive(user).then(() => {
+		if (user && user.transactId)  this.props.keepalive(user).then(() => {
 
 		})
 }
@@ -31,10 +31,10 @@ class Keepalive extends React.Component {
 Keepalive.propTypes = {
  keepalive: PropTypes.func.isRequired,
  user: PropTypes.shape({
-	 transactId: PropTypes.string.isRequired,
-	 user:PropTypes.string.isRequired,
-	 password:PropTypes.string.isRequired,
-	 lang:PropTypes.string.isRequired,
+	 transactId: PropTypes.string,
+	 user:PropTypes.string,
+	 password:PropTypes.string,
+	 lang:PropTypes.string,
  }).isRequired
 };
 

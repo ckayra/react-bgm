@@ -1,4 +1,4 @@
-import { USER_LOGGED_IN , USER_LOGGED_OUT,SET_CODAGENTE, SET_CODCLIENTE,SET_DESAGENTE, SET_DESCLIENTE} from "../types";
+import { USER_LOGGED_IN , USER_LOGGED_OUT,SET_CODAGENTE, SET_CODCLIENTE,SET_DESAGENTE, SET_DESCLIENTE,SET_LANG,SESSION_TIMEOUT} from "../types";
 import api from "../api";
 
 export const userLoggedIn = user => ({
@@ -10,6 +10,9 @@ export const userLoggedOut = user => ({
   type: USER_LOGGED_OUT,user
 });
 
+export const sessionTimedOut = user => ({
+  type: SESSION_TIMEOUT,user
+});
 export const setCodAgente = codiceAgente => ({
   type: SET_CODAGENTE,codiceAgente
 });
@@ -22,21 +25,28 @@ export const setCodCliente = codiceCliente => ({
 export const setDesCliente = desCliente => ({
   type: SET_DESCLIENTE,desCliente
 });
-
+export const setLang = lang => ({
+  type: SET_LANG,lang
+});
 
 
 export const login = credentials => dispatch =>
 	api.user.login(credentials).then(user => {
+
 	sessionStorage.user=JSON.stringify(user);
 	dispatch(userLoggedIn(user));
 });
 
 export const logout = credentials => dispatch =>{
   sessionStorage.removeItem('user');
-dispatch(userLoggedOut(credentials));
-api.user.logout(credentials)
+  dispatch(userLoggedOut(credentials));
+  api.user.logout(credentials)
 }
 
+export const sessionTimeOut = credentials => dispatch =>{
+  sessionStorage.removeItem('user');
+  dispatch(sessionTimedOut(credentials));
+}
 
 
 
@@ -52,6 +62,7 @@ export const changepassword = (credentials, newpassword) => dispatch =>
 	api.user.keepalive(credentials)
 
 
+
   export const selectAgente = agente => dispatch =>
    {
   	dispatch(setCodAgente(agente.codiceAgente));
@@ -61,7 +72,7 @@ export const changepassword = (credentials, newpassword) => dispatch =>
     	const user=JSON.parse(sessionStorage.user);
       user.codiceAgente=agente.codiceAgente;
       user.desAgente=agente.desAgente;
-      //reset Cliente
+      // reset Cliente
       user.codiceCliente=''
       user.desCliente=''
       sessionStorage.user=JSON.stringify(user);
@@ -75,4 +86,23 @@ export const changepassword = (credentials, newpassword) => dispatch =>
     user.codiceCliente=cliente.codiceCliente;
     user.desCliente=cliente.ragSociale12;
     sessionStorage.user=JSON.stringify(user);
+  }
+
+  export const setLanguage= selectedLang => dispatch => {
+    const user=JSON.parse(sessionStorage.user);
+   const lang=selectedLang;
+    // let lang="en"
+    // switch (selectedLang){
+    //   case 'en':
+    //     lang="02"
+    //     break;
+    //   case "it":
+    //     lang="01"
+    //     break;
+    //   default:
+    //   lang="01"
+    // }
+      user.lang=lang
+    sessionStorage.user=JSON.stringify(user);
+    dispatch(setLang(lang))
   }

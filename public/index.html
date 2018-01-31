@@ -23,20 +23,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel='stylesheet'">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-    <script>
-      $(function(){
-         $('.nav-menucataweb .material-icons').on('click',function(){
-            $('.main-leftsidebar').toggleClass('menu-open');
-         });
-    });
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="./build/css/main.css" rel="stylesheet">
 
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
 
-    </script>
   </head>
   <body>
     <noscript>
@@ -53,5 +47,13 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+
+    <script>
+      $(function(){
+         $('.nav-menucataweb .material-icons').on('click',function(){
+            $('.main-leftsidebar').toggleClass('menu-open');
+         });
+    });
+    </script>
+
 </html>

@@ -1,14 +1,18 @@
 import React  from 'react';
+import PropTypes from 'prop-types'
 import { NavLink  } from 'react-router-dom';
 
-export default class NavBarLink extends React.Component {
-  render() {
+const NavBarLink = ({...props}) =>(
+        <NavLink  {...props} className={`nav-link ${props.className}`}  >{props.text}</NavLink >
+)
 
-    return (
-        <div>
-        <NavLink  {...this.props} activeClassName='active' >{this.props.text}</NavLink >
-        </div>
-
-    );
-  }
+NavBarLink.defaultProps={
+  className: ''
 }
+
+NavBarLink.propTypes={
+  text: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  className: PropTypes.string,
+}
+export default NavBarLink

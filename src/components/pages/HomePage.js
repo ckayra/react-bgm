@@ -7,7 +7,7 @@ import * as actions from '../../actions/auth'
 const HomePage=({isAuthenticated, logout,user}) => (
 	<div>
 		<h1>Home Page</h1>
-		{isAuthenticated ? <button onClick={()  =>logout(user)}>Logout {user.user}</button> :<Link  to="/login">Login</Link>}
+		{isAuthenticated ? <button onClick={()  =>logout(user)}>Logout {user.user}</button> :<Link href='login' to="/login">Login</Link>}
 	</div>
 );
 

@@ -4,7 +4,7 @@ import {Route, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux';
 
 const MasterRoute = ({isMasterUser,isAuthenticated,component: Component, ...rest}) => (
-	<Route {...rest} render={props => isAuthenticated ?  isMasterUser? <Component {...props} /> : <Redirect to="/daticontabili" /> : <Redirect to="/login" />} />
+	<Route {...rest} render={props =>  isAuthenticated ?  isMasterUser? <Component {...props} /> : <Redirect to="daticontabili" /> : <Redirect to="/login" />} />
 )
 
 MasterRoute.propTypes={

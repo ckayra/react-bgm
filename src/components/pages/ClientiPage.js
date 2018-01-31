@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import api from "../../api";
 import { selectCliente } from "../../actions/auth";
 import Table from "../table/table";
+import {StringToImporto} from '../utils/Importo'
 
 class ClientiPage extends React.Component {
   state = {
@@ -23,10 +24,17 @@ class ClientiPage extends React.Component {
     });
   }
 
-  setCliente = rowdata => {
-    this.props.selectCliente(rowdata);
-    this.props.history.push("/daticontabili");
-  };
+onRowClick=(rowdata,col) =>{
+  this.props.selectCliente(rowdata);
+  if (col.id==="colModifica") {this.props.history.push({pathname:"cliente",state: { codiceCliente: rowdata.codiceCliente }});}
+  else this.props.history.push("daticontabili");
+
+}
+
+  // setCliente = rowdata => {
+  //   this.props.selectCliente(rowdata);
+  //   this.props.history.push("daticontabili");
+  // };
 
   columns = [
     { title: "Cod. Cliente", field: "codiceCliente", maxWidth: 100 },
@@ -41,7 +49,7 @@ class ClientiPage extends React.Component {
       align: "center",
       render: val =>
         val === "S" ? (
-          <i className="material-icons icona-scaduto">report_problem</i>
+          <i className="material-icons icona-scaduto" title='scaduto/insoluti'>report_problem</i>
         ) : (
           ""
         )
@@ -51,8 +59,17 @@ class ClientiPage extends React.Component {
       field: "scaduto",
       maxWidth: 100,
       align: "right",
-      render: val => (val === "0,00" ? "" : val)
-    }
+      render: val => (val === "0,00" ? "" :  StringToImporto(val) )
+    },
+    {
+      title: "",
+      field: "",
+      maxWidth: 40,
+      align: "center",
+      id: 'colModifica',
+      render: () =>
+          <i className="material-icons" title='Edit'>mode_edit</i>
+    },
   ];
 
   render() {
@@ -62,7 +79,7 @@ class ClientiPage extends React.Component {
         columns={this.columns}
         loading={this.state.loading}
         pageSize={this.state.pageSize}
-        onRowClick={this.setCliente}
+        onRowClick={this.onRowClick}
         style={{ maxWidth: "1400px" }}
         filter
         sort={[

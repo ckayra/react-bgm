@@ -28,6 +28,10 @@ class LoginPage extends React.Component  {
   }
 }
 
+LoginPage.defaultProps={
+  user: {}
+}
+
 LoginPage.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -36,11 +40,11 @@ LoginPage.propTypes = {
   changepassword: PropTypes.func.isRequired,
   mustChangePassword: PropTypes.bool.isRequired,
   user: PropTypes.shape({
- 	 transactId: PropTypes.string.isRequired,
- 	 user:PropTypes.string.isRequired,
- 	 password:PropTypes.string.isRequired,
- 	 lang:PropTypes.string.isRequired,
- }).isRequired
+ 	 transactId: PropTypes.string,
+ 	 user:PropTypes.string,
+ 	 password:PropTypes.string,
+ 	 lang:PropTypes.string,
+ })
 };
 
 function mapStateToProps(state){
