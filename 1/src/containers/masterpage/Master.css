@@ -1,0 +1,51 @@
+html, body, #root {
+	box-sizing: border-box;
+  	margin:0px;
+	padding:0px;
+	height:100%;
+  font-family: 'Roboto', sans-serif;
+  background-color:whitesmoke;
+}
+
+#root{
+	overflow:hidden;
+}
+.top {
+  grid-area: header;
+}
+.main-content {
+  grid-area: content;
+}
+.main-leftsidebar {
+  grid-area: leftsidebar;
+}
+.main-footer {
+  grid-area: footer;
+}
+
+.main-content {
+overflow:hidden;
+	@media @large{
+	padding:20px;
+	}
+}
+.main-leftsidebar {
+  background-color: @primary-bg;
+  color:@primary;
+  transition: all 1s;
+}
+.main-footer {
+  background-color:orange;
+}
+
+.wrapper {
+	height:100%;
+	display: grid;
+	grid-gap: 0px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr 30px;
+    grid-template-areas:
+    "header  header"
+    "leftsidebar content"
+    "leftsidebar      footer";
+}

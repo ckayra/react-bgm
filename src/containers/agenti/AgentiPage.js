@@ -10,7 +10,7 @@ class AgentiPage extends React.Component {
 
 
   componentDidMount() {
-    if (!this.agenti) getAgentiRequest(this.props.user)
+    if (!this.agenti) this.props.getAgentiRequest(this.props.user)
   }
 
   setAgente = rowdata => {
@@ -66,6 +66,7 @@ AgentiPage.propTypes = {
      requesting: PropTypes.bool,
      successful: PropTypes.bool,
    }).isRequired,
+   getAgentiRequest: PropTypes.func.isRequired
 
 
 };
@@ -76,5 +77,6 @@ function mapStateToProps(state) {
     apiRequest:state.apiRequest,
   };
 }
+
 
 export default connect(mapStateToProps, { getAgentiRequest,selectAgente })(AgentiPage);

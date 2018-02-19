@@ -22,6 +22,9 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(sagaMiddleware, thunk))
 );
+
+
+
 sagaMiddleware.run(rootSaga);
 if (sessionStorage.user) {
   const response = JSON.parse(sessionStorage.user);

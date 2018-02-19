@@ -18,9 +18,5 @@ export default {
     //   sessionStorage.removeItem('user');
     //   dispatch(sessionTimeOut(credentials));
     // }),
-	},
-  	agenti:{
-  		get:(user) =>  ax.post( 'agenti', user).then(res => res.data),
-  	}
-
+	}
 }
