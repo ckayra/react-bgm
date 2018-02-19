@@ -10,7 +10,7 @@ class AgentiPage extends React.Component {
 
 
   componentDidMount() {
-    if (!this.agenti) this.props.getAgentiRequest(this.props.user)
+    if (!this.props.agenti) this.props.getAgentiRequest(this.props.user)
   }
 
   setAgente = rowdata => {

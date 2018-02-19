@@ -20,7 +20,7 @@ export default {
     // }),
 	},
   	agenti:{
-  		get:(user) =>  ax.post( 'agenti', user).then(res => res.data),
+  		getAgenti:(user) =>  ax.post( 'agenti', user).then(res => res.data),
   	}
 
 }

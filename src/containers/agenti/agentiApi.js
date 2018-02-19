@@ -8,7 +8,6 @@ const ax = axios.create({
 export default {
 
 	agenti:{
-		get:(user) =>
- ax.post( 'agenti', user).then(res => res.data),
+		get:(user) =>  ax.post( 'agenti', user).then(res => res.data),
 	}
 }

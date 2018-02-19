@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Dropdown} from 'semantic-ui-react';
 import { connect } from "react-redux";
-import { logout, setLanguage } from "../../actions/auth";
+import { logoutRequest,setLanguage } from "../login/loginActions";
 import  '../../css/nav-user.css';
 
 class UserAccout extends React.Component {
-  dologout = () => this.props.logout(this.props.user)
+  dologout = () => this.props.logoutRequest(this.props.user)
 
   render() {
     const dropUser=(
@@ -27,7 +27,7 @@ class UserAccout extends React.Component {
 
 UserAccout.propTypes = {
   username: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
+  logoutRequest: PropTypes.func.isRequired,
   user: PropTypes.shape({
     transactId: PropTypes.string.isRequired,
     user:PropTypes.string.isRequired,
@@ -45,4 +45,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,{logout,setLanguage})(UserAccout);
+export default connect(mapStateToProps,{logoutRequest,setLanguage})(UserAccout);

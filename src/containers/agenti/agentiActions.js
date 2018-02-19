@@ -1,4 +1,4 @@
-import { GETAGENTI_REQUEST,AGENTI_SET } from './agentiConstants'
+import { GETAGENTI_REQUEST,AGENTI_SET} from './agentiConstants'
 
 export  function getAgentiRequest ( user ) {
 
@@ -8,10 +8,10 @@ export  function getAgentiRequest ( user ) {
   }
 }
 
-export  function setAgentiRequest ( agenti ) {
+export  function setAgentiRequest ( response ) {
 //  sessionStorage.agenti=JSON.stringify(agenti);
   return {
     type: AGENTI_SET,
-    agenti
+    response
   }
 }

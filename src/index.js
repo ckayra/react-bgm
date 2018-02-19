@@ -15,6 +15,8 @@ import rootReducer from "./rootReducer";
 import rootSaga from "./rootSaga";
 import registerServiceWorker from "./registerServiceWorker";
 import { setUser } from "./containers/user/userActions";
+import { setAgentiRequest } from "./containers/agenti/agentiActions";
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -29,6 +31,11 @@ sagaMiddleware.run(rootSaga);
 if (sessionStorage.user) {
   const response = JSON.parse(sessionStorage.user);
   store.dispatch(setUser(response));
+}
+if (sessionStorage.agenti) {
+  const response = JSON.parse(sessionStorage.agenti);
+  store.dispatch(setAgentiRequest(response));
+
 }
 
 ReactDOM.render(
