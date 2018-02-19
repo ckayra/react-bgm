@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
-
-import user from "./reducers/user";
+ import apiRequest from "./reducers/apiRequestReducer";
+import user from "./containers/user/userReducer";
+import agenti from "./containers/agenti/agentiReducer"
 
 export default combineReducers({
-  user
+  user,
+  apiRequest,
+  agenti
 });

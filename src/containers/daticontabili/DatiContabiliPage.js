@@ -2,7 +2,7 @@ import React  from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import api from "../../api";
-import {StringToImporto} from '../utils/Importo'
+import {StringToImporto} from '../../components/utils/Importo'
 
 class DatiContabili extends React.Component {
 	state={

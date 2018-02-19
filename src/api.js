@@ -9,10 +9,10 @@ import {sessionTimeOut} from './actions/auth'
   timeout: 60000,
   // headers: {'X-Custom-Header': 'foobar'}
 })
-const init= () => axios.interceptors.response.use( (response)  => {
+const init= () => axios.interceptors.response.use( (response)  => 
     // Do something with response data
-    return response;
-  },  (error) => {
+     response
+  ,  (error) => {
   console.log('interceped error' , error)
     return Promise.reject(error);
   });

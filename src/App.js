@@ -6,11 +6,11 @@ import { connect } from "react-redux";
  // import {addLocaleData,IntlProvider} from 'react-intl';
  // import en from 'react-intl/locale-data/en';
  // import it from 'react-intl/locale-data/it';
-import LoginPage from './components/pages/LoginPage'
+import LoginPage from './containers/login/LoginPage'
 import ErrorBoundary from './components/utils/ErrorBoundary';
 import Keepalive from './components/utils/Keepalive';
-import UserRoute from './components/routes/UserRoute'
-import MasterPage from './components/pages/MasterPage'
+import UserRoute from './routes/UserRoute'
+import MasterPage from './containers/masterpage/MasterPage'
 // import messages from './strings/strings'
 // import localeData from '../src/strings/strings.json';
 //

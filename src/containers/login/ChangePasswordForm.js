@@ -1,13 +1,14 @@
 import React  from 'react';
-import {Form,Button, Message, Icon} from 'semantic-ui-react';
+import {Form,Button, Message} from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import InlineError from '../messages/InlineError';
+import InlineError from '../../components/messages/InlineError'
 
-class LoginForm extends React.Component{
+class ChangePasswordForm extends React.Component {
 	state={
 		data:{
 			user:'',
-			password:''
+			password:'',
+			confirmpassword:''
 		},
 		loading: false,
 		errors: {}
@@ -37,7 +38,8 @@ class LoginForm extends React.Component{
 	validate=(data)=>{
 		const errors={};
 		if (!data.password) errors.password="Insert Password";
-		if (!data.user) errors.user="Insert User Name";
+		if (!data.confirmpassword) errors.confirmpassword="Insert Password";
+		if (data.password !== data.confirmpassword) errors.global="Le password inserite non sono uguali";
 		return errors;
 	}
 
@@ -45,33 +47,30 @@ class LoginForm extends React.Component{
 		const {data,errors, loading}=this.state;
 		return(
 			<Form onSubmit={this.onSubmit} loading={loading}>
-				<Form.Field error={!!errors && !!errors.user}>
-					<label htmlFor='user'>User
-					<input type='text' id='user' name='user' placeholder='insert user' value={data.user} onChange={this.onChange} />
-</label>
-			</Form.Field>
-				{errors && errors.user && <InlineError text={errors.user}/>}
 				<Form.Field error={!!errors && !!errors.password}>
 					<label htmlFor='password'>Password
 						<input type='password' id='password' name='password' placeholder='insert password' value={data.password} onChange={this.onChange} />
 					</label>
 				</Form.Field>
 				{errors && errors.password && <InlineError text={errors.password}/>}
-				{errors && errors.global && <Message negative icon>
-					<Icon name="warning sign" />
-					<Message.Content>
-						<Message.Header>Si è verificato un errore</Message.Header>
-						<p>{errors.global}</p>
-					</Message.Content>
+				<Form.Field error={!!errors && !!errors.confirmpassword}>
+					<label htmlFor='confirmpassword'>Confirm Password
+						<input type='password' id='confirmpassword' name='confirmpassword' placeholder='confirm password' value={data.confirmpassword} onChange={this.onChange} />
+					</label>
+				</Form.Field>
+				{errors && errors.confirmpassword && <InlineError text={errors.confirmpassword}/>}
+				{errors && errors.global && <Message negative>
+					<Message.Header>Something went wrong</Message.Header>
+					<p>{errors.global}</p>
 				</Message>}
-				<Button primary>Login</Button>
+				<Button primary>Change Password</Button>
 			</Form>
 		)
 	}
 }
 
-LoginForm.propTypes={
+ChangePasswordForm.propTypes={
 	submit: PropTypes.func.isRequired
 };
 
-export default LoginForm;
+export default ChangePasswordForm;

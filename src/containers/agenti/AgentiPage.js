@@ -2,21 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import "react-table/react-table.css";
 import PropTypes from "prop-types";
-import api from "../../api";
 import { selectAgente } from "../../actions/auth";
-import Table from "../table/table";
+import Table from "../../components/table/table";
+import {getAgentiRequest} from './agentiActions'
 
 class AgentiPage extends React.Component {
-  state = {
-    agenti: undefined,
-    loading: true,
-    pageSize: 10
-  };
+
 
   componentDidMount() {
-    api.agenti.getAgenti(this.props.user).then(agenti => {
-      this.setState({ agenti, loading: false, pageSize: agenti.length });
-    });
+    if (!this.agenti) getAgentiRequest(this.props.user)
   }
 
   setAgente = rowdata => {
@@ -37,10 +31,10 @@ class AgentiPage extends React.Component {
   render() {
     return (
       <Table
-        data={this.state.agenti}
+        data={this.props.agenti}
         columns={this.columns}
-        loading={this.state.loading}
-        pageSize={this.state.pageSize}
+        loading={this.props.apiRequest.requesting}
+        pageSize={this.props.agenti ? this.props.agenti.length : 0}
         onRowClick={this.setAgente}
         style={{ maxWidth: "700px" }}
         sort={[{ field: "codiceAgente", order: "asc" }]}
@@ -49,6 +43,9 @@ class AgentiPage extends React.Component {
     );
   }
 }
+AgentiPage.defaultProps ={
+  agenti:[],
+}
 
 AgentiPage.propTypes = {
   user: PropTypes.shape({
@@ -56,17 +53,28 @@ AgentiPage.propTypes = {
     user: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     lang: PropTypes.string.isRequired
-  }).isRequired,
+}).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  selectAgente: PropTypes.func.isRequired
-};
+  selectAgente: PropTypes.func.isRequired,
+  agenti:PropTypes.arrayOf( PropTypes.shape({
+     codice: PropTypes.string,}
+   )),
+   apiRequest: PropTypes.shape({
+     errors: PropTypes.array,
+     requesting: PropTypes.bool,
+     successful: PropTypes.bool,
+   }).isRequired,
 
+
+};
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    agenti: state.agenti,
+    apiRequest:state.apiRequest,
   };
 }
 
-export default connect(mapStateToProps, { selectAgente })(AgentiPage);
+export default connect(mapStateToProps, { getAgentiRequest,selectAgente })(AgentiPage);

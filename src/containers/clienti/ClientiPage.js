@@ -4,8 +4,8 @@ import "react-table/react-table.css";
 import PropTypes from "prop-types";
 import api from "../../api";
 import { selectCliente } from "../../actions/auth";
-import Table from "../table/table";
-import {StringToImporto} from '../utils/Importo'
+import Table from "../../components/table/table";
+import {StringToImporto} from '../../components/utils/Importo'
 
 class ClientiPage extends React.Component {
   state = {
