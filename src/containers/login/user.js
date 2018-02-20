@@ -1,10 +1,12 @@
+
+
 // constants
 export const types = {
    USER_SET:"USER_SET",
    USER_UNSET:"USER_UNSET",
    USER_SETAGENTE:"USER_SETAGENTE",
    USER_SETCLIENTE:"USER_SETCLIENTE",
-
+   AGENTE_SELECT:"AGENTE_SELECT"
 }
 
 // reducers
@@ -17,6 +19,8 @@ export default (state = initialState, action) => {
         ...state,
           codiceAgente:action.codiceAgente,
           desAgente:action.desAgente,
+          codiceCliente:"",
+          desCliente:"",
       };
       case types.USER_SETCLIENTE:   return {
          ...state,
@@ -33,8 +37,9 @@ export const actions = {
   setUser: (user) => ({ type: types.USER_SET, user }),
   unsetUser: (user) => ({ type: types.USER_UNSET, user }),
   setAgente: (user,codiceAgente,desAgente) =>
-     ([{ type: types.USER_SETAGENTE, user,codiceAgente,desAgente },{ type: types.USER_SETCLIENTE, user,codiceCliente:'',desCliente:'' }])
+     ({ type: types.AGENTE_SELECT, user,codiceAgente,desAgente })
    ,
-  setCliente: (user,codiceCliente,desCliente) => ({ type: types.USER_SETCLIENTE, user,codiceCliente,desCliente }),
+  setCliente: (user,codiceCliente,desCliente) =>
+     ({ type: types.USER_SETCLIENTE, user,codiceCliente,desCliente })
 
 }

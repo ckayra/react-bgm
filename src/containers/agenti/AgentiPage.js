@@ -12,13 +12,15 @@ class AgentiPage extends React.Component {
 
 
   componentDidMount() {
-    if (!this.props.agenti || this.props.agenti.length===0){
-     this.props.onGetAgenti(this.props.user)
-    }
+    if (!this.props.agenti || this.props.agenti.length===0)     this.props.onGetAgenti(this.props.user)
+
   }
 
   setAgente = rowdata => {
-    if (this.props.user.codiceAgente!==rowdata.codiceAgente) this.props.onSetAgente(this.props.user,rowdata.codiceAgente,rowdata.desAgente);
+    if (this.props.user.codiceAgente!==rowdata.codiceAgente){
+      this.props.onSetAgente(this.props.user,rowdata.codiceAgente,rowdata.desAgente);
+
+    }
     this.props.history.push("/clienti");
   };
 
@@ -86,7 +88,9 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => ({
     onGetAgenti: bindActionCreators(agentiActions.getAgenti, dispatch),
-    onSetAgente: bindActionCreators(userActions.setAgente, dispatch),
+    onSetAgente: bindActionCreators(userActions.setAgente,dispatch)
+
+  //  onSetAgente: bindActionCreators({ ...userActions.setAgente, ...userActions.unsetCliente }, dispatch)
 
 })
 

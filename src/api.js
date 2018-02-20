@@ -24,5 +24,9 @@ export default {
   	},
     clienti:{
       getClienti:(user) =>  ax.post( 'clienti', user).then(res => res.data),
+      getDatiContabili:(user)=>
+      ax
+        .post( `daticontabili`,user)
+        .then(res =>  res.data )
     },
 }
