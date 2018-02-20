@@ -41,9 +41,9 @@ class DatiContabili extends React.Component {
 						<span className='etichetta'>Scaduto</span><span className='valore'>{StringToImporto(dc.scaduto,'-')}</span>
 						<span className='etichetta'>Nr. Insoluti Aperti</span><span className='valore'>{dc.nrInsol}</span>
 							<span className='etichetta col2'>Per Euro</span><span className='valore col3'>{StringToImporto(dc.valInso,'-')}</span>
-					<span className='etichetta'>Progres. Fatt. 2018</span><span className='valore'>{StringToImporto(dc.FatEseAtt,'-')}</span>
-						<span className='etichetta'>Progres. Fatt. 2017</span><span className='valore'>{StringToImporto(dc.FatEsePre,'-')}</span>
-						<span className='etichetta'>Progres. Fatt. 2016</span><span className='valore'>{StringToImporto(dc.FatEseMe2,'-')}</span>
+					<span className='etichetta'>Progres. Fatt. {this.state.anno}</span><span className='valore'>{StringToImporto(dc.FatEseAtt,'-')}</span>
+						<span className='etichetta'>Progres. Fatt. {this.state.anno-1}</span><span className='valore'>{StringToImporto(dc.FatEsePre,'-')}</span>
+						<span className='etichetta'>Progres. Fatt. {this.state.anno-2}</span><span className='valore'>{StringToImporto(dc.FatEseMe2,'-')}</span>
 						<span className='etichetta'>Valore Ordini in Corso</span><span className='valore'>{StringToImporto(dc.ValOrdini,'-')}</span>
 						<span className='etichetta'>Fido</span><span className='valore'>{StringToImporto(dc.ValFido,'-')}</span>
 						<span className='etichetta'>Importo Supero Fido</span><span className='valore'>{StringToImporto(dc.SupFido,'-')}</span>
