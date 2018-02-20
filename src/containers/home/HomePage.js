@@ -2,7 +2,7 @@ import React  from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import * as actions from '../../actions/auth'
+import {actions as loginActions} from '../login/login'
 
 const HomePage=({isAuthenticated, logout,user}) => (
 	<div>
@@ -30,4 +30,4 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps, {logout: actions.logout})(HomePage);
+export default connect(mapStateToProps, {logout: loginActions.logoutRequest})(HomePage);

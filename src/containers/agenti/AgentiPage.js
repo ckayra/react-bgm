@@ -2,19 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import "react-table/react-table.css";
 import PropTypes from "prop-types";
-import { selectAgente } from "../../actions/auth";
+import { bindActionCreators } from 'redux'
 import Table from "../../components/table/table";
-import {getAgentiRequest} from './agentiActions'
+import {actions as agentiActions} from './agenti'
+import {actions as userActions} from '../login/user'
+
 
 class AgentiPage extends React.Component {
 
 
   componentDidMount() {
-    if (!this.props.agenti) this.props.getAgentiRequest(this.props.user)
+    if (!this.props.agenti || this.props.agenti.length===0){
+     this.props.onGetAgenti(this.props.user)
+    }
   }
 
   setAgente = rowdata => {
-    this.props.selectAgente(rowdata);
+    if (this.props.user.codiceAgente!==rowdata.codiceAgente) this.props.onSetAgente(this.props.user,rowdata.codiceAgente,rowdata.desAgente);
     this.props.history.push("/clienti");
   };
 
@@ -52,22 +56,24 @@ AgentiPage.propTypes = {
     transactId: PropTypes.string.isRequired,
     user: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    lang: PropTypes.string.isRequired
+    lang: PropTypes.string.isRequired,
+    codiceAgente:PropTypes.string.isRequired
 }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  selectAgente: PropTypes.func.isRequired,
   agenti:PropTypes.arrayOf( PropTypes.shape({
-     codice: PropTypes.string,}
+     codiceAgente: PropTypes.string,
+     desAgente: PropTypes.string,
+   }
    )),
    apiRequest: PropTypes.shape({
      errors: PropTypes.array,
      requesting: PropTypes.bool,
      successful: PropTypes.bool,
    }).isRequired,
-   getAgentiRequest: PropTypes.func.isRequired
-
+   onGetAgenti: PropTypes.func.isRequired,
+onSetAgente: PropTypes.func.isRequired
 
 };
 function mapStateToProps(state) {
@@ -78,5 +84,10 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    onGetAgenti: bindActionCreators(agentiActions.getAgenti, dispatch),
+    onSetAgente: bindActionCreators(userActions.setAgente, dispatch),
 
-export default connect(mapStateToProps, { getAgentiRequest,selectAgente })(AgentiPage);
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AgentiPage);

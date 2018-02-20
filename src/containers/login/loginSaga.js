@@ -1,59 +1,65 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import {  LOGIN_REQUEST,LOGOUT_REQUEST} from './loginConstants'
-import {  API_REQUEST,API_ERROR,API_SUCCESS} from '../../reducers/apiRequestConstants'
-import {USER_SET,USER_UNSET} from '../user/userConstants'
-
+import {  types as loginTypes} from './login'
+import {types as userType} from './user'
+import {  types as apiTypes} from '../../apiHelper'
 import api from "../../api";
 
 
 function* logoutFlow () {
-      yield put({ type: USER_UNSET})
+      yield put({ type: userType.USER_UNSET})
 }
 
 function* loginFlow (action) {
-    yield put({ type: API_REQUEST})
   try {
     const {user } = action
     if (user.user===undefined )  {
-      yield put({ type: API_ERROR,errors:{user: 'insert user'} })
-      yield put({ type: USER_UNSET})
-
       return
     }
     if (user.password===undefined ){
-        yield put({ type: API_ERROR,errors:{password: 'insert password'} })
-        yield put({ type: USER_UNSET})
-
       return
     }
+    yield put({ type: apiTypes.API_REQUEST})
     const response = yield call(api.user.login, user.user,user.password)
-    yield put({ type: API_SUCCESS,response})
+    yield put({ type: apiTypes.API_SUCCESS,response})
     sessionStorage.setItem('user',JSON.stringify(response))
-    yield put({ type: USER_SET,response})
+    yield put({ type: userType.USER_SET,response})
 
   } catch (error) {
     try {
       const errors=error.response.data.errors.global
-      yield put({ type: API_ERROR,errors})
-      yield put({ type: USER_UNSET})
-
+      yield put({ type: apiTypes.API_ERROR,errors})
     } catch (e) {
       const errors=error
-      yield put({ type: API_ERROR,errors})
-      yield put({ type: USER_UNSET})
-
+      yield put({ type: apiTypes.API_ERROR,errors})
     }
   }
 }
 
+function* keepaliveFlow (action) {
+  try {
+    const {user } = action
+    yield put({ type: apiTypes.API_REQUEST})
+    const response = yield call(api.user.keepalive, user.user,user.password)
+    yield put({ type: apiTypes.API_SUCCESS,response})
+  } catch (error) {
+    try {
+      const errors=error.response.data.errors.global
+      yield put({ type: apiTypes.API_ERROR,errors})
+      yield put({ type: userType.USER_UNSET})
+
+    } catch (e) {
+      const errors=error
+      yield put({ type: apiTypes.API_ERROR,errors})
+    }
+  }
+}
 
 function* loginSaga () {
   // yield takeLatest(LOGIN_REQUEST, loginFlow)
-
-
     yield [
-     takeLatest(LOGIN_REQUEST, loginFlow),
-       takeLatest(LOGOUT_REQUEST, logoutFlow)
+     takeLatest(loginTypes.LOGIN_REQUEST, loginFlow),
+     takeLatest(loginTypes.LOGOUT_REQUEST, logoutFlow),
+     takeLatest(loginTypes.KEEPALIVE_REQUEST, keepaliveFlow)
     ]
 }
 

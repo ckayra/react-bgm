@@ -1,8 +1,8 @@
 import React  from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
-import {keepalive}  from "../../actions/auth";
-
+import { bindActionCreators } from 'redux'
+import {actions as loginActions}  from "../../containers/login/login";
 
 class Keepalive extends React.Component {
 
@@ -17,11 +17,8 @@ class Keepalive extends React.Component {
 	}
 
 	tick = (user) =>{
-		if (user && user.transactId)  this.props.keepalive(user).then(() => {
-
-		})
+		if (user && user.transactId)  this.props.onKeepAlive(user)
 }
-
 
 	render() {
 		return <div/>;
@@ -29,7 +26,7 @@ class Keepalive extends React.Component {
 }
 
 Keepalive.propTypes = {
- keepalive: PropTypes.func.isRequired,
+ onKeepAlive: PropTypes.func.isRequired,
  user: PropTypes.shape({
 	 transactId: PropTypes.string,
 	 user:PropTypes.string,
@@ -39,11 +36,14 @@ Keepalive.propTypes = {
 };
 
 
+const mapDispatchToProps = (dispatch) => ({
+    onKeepAlive: bindActionCreators(loginActions.keepalive, dispatch),
+})
+
 function mapStateToProps(state){
   return{
     user: state.user,
-
   }
 }
 
-export default connect(mapStateToProps, { keepalive })(Keepalive);
+export default connect(mapStateToProps,mapDispatchToProps )(Keepalive);

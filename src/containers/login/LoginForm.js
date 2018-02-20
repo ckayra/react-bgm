@@ -1,9 +1,10 @@
 import React  from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { Button,  Form,Container ,Message} from 'semantic-ui-react'
 import { withRouter} from 'react-router-dom'
-import loginRequest from './loginActions'
+import {actions as  loginActions} from './login'
 
 class LoginForm extends React.Component {
   state={
@@ -28,7 +29,7 @@ class LoginForm extends React.Component {
     this.setState({errors});
 
     if (Object.keys(errors).length===0)  {
-      this.props.loginRequest(this.state.user)
+      this.props.onLoginRequest(this.state.user)
     }
   }
 
@@ -81,7 +82,7 @@ class LoginForm extends React.Component {
 
 
 LoginForm.propTypes ={
-  loginRequest:PropTypes.func.isRequired,
+  onLoginRequest:PropTypes.func.isRequired,
   apiRequest: PropTypes.shape({
     errors: PropTypes.array,
     requesting: PropTypes.bool,
@@ -92,10 +93,14 @@ LoginForm.propTypes ={
   }).isRequired,
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    onLoginRequest: bindActionCreators(loginActions.loginRequest, dispatch),
+})
+
 const mapStateToProps = state => ({
   user: state.user,
   apiRequest:state.apiRequest
 })
 
 
-export default withRouter(connect(mapStateToProps, { loginRequest })(LoginForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))

@@ -1,10 +1,29 @@
 import { combineReducers } from "redux";
- import apiRequest from "./reducers/apiRequestReducer";
-import user from "./containers/user/userReducer";
-import agenti from "./containers/agenti/agentiReducer"
+ import apiRequest from "./apiHelper";
+import user from "./containers/login/user";
+import agenti from "./containers/agenti/agenti"
+import clienti from "./containers/clienti/clienti"
+import {types as userTypes} from './containers/login/user'
 
-export default combineReducers({
+const appReducer = combineReducers({
   user,
   apiRequest,
-  agenti
+  agenti,
+  clienti
 });
+
+const rootReducer = ( state, action ) => {
+  if ( action.type === userTypes.USER_UNSET ) {
+    sessionStorage.clear();
+    state = undefined;
+  }
+  return appReducer(state, action)
+}
+
+export default rootReducer
+//
+// export default combineReducers({
+//   user,
+//   apiRequest,
+//   agenti
+// });
