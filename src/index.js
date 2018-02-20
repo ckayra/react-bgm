@@ -15,6 +15,7 @@ import rootReducer from "./rootReducer";
 import rootSaga from "./rootSaga";
 import registerServiceWorker from "./registerServiceWorker";
 // import {loadState,saveState} from "./sessionStorage"
+<<<<<<< HEAD
 
 // const persistedState = sessionStorage.getItem('reduxState') ? JSON.parse(sessionStorage.getItem('reduxState')) : {}
 // const persistedState = loadState();
@@ -72,14 +73,73 @@ import registerServiceWorker from "./registerServiceWorker";
  //     }
  //     next(action)
  //   }
+=======
+>>>>>>> aff5bcd097a3e157a7251010ffeac33594dca11f
 
+// const persistedState = sessionStorage.getItem('reduxState') ? JSON.parse(sessionStorage.getItem('reduxState')) : {}
+// const persistedState = loadState();
+
+ // const localStorageMiddleware = store => next => action => {
+ // if (action.type === 'REGISTER' || action.type === 'LOGIN') {
+ //   if (!action.error) {
+ //     window.localStorage.setItem('jwt', action.payload.user.token);
+ //     agent.setToken(action.payload.user.token);
+ //   }
+ // } else if (action.type === 'LOGOUT') {
+ //   window.localStorage.setItem('jwt', '');
+ //   agent.setToken(null);
+ // }
+ // next(action);
+ // };
+
+ //
+ // const loggerFactory = (name) =>
+ //      (middlewareAPI) =>
+ //          (next) =>
+ //              (action) => {
+ //                 const ret = next(action),
+ //                     newstate = middlewareAPI.getState();
+ //                 output(name+": called with "+JSON.stringify(action)+", state now "+newstate);
+ //                 return ret;
+ //             }
+ //
+
+
+
+ //
+ // const localStorageMiddleware = () => store => next => action => {
+ //   // Get the state before and after the action was performed
+ //   // const previousToken = store.getState().token;
+ //   console.log(action)
+ //    next(action);
+ //   // const nextToken = store.getState().token;
+ //   //
+ //   //
+ //   // if (action.type === 'USER_SET' ){
+ //   //   console.log("middleware storing user")
+ //   //   localStorage.setItem('userxxx', nextToken)
+ //   // }
+ //   //
+ //   // // Respond to changes
+ //   // if (nextToken !== previousToken) localStorage.setItem('token', nextToken);
+ // };
+
+
+ export default function localStorageMiddleware () {
+   return store => next => action => {
+     if (action.type === 'USER_SET') {
+      console.log('ciao')
+     }
+     next(action)
+   }
+ }
 
 const sagaMiddleware = createSagaMiddleware();
 
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware, thunk))
+  composeWithDevTools(applyMiddleware(localStorageMiddleware,sagaMiddleware, thunk))
 );
 
 // store.subscribe(()=>{
