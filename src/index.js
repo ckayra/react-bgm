@@ -14,8 +14,6 @@ import App from "./App";
 import rootReducer from "./rootReducer";
 import rootSaga from "./rootSaga";
 import registerServiceWorker from "./registerServiceWorker";
-import { setUser } from "./containers/user/userActions";
-import { setAgentiRequest } from "./containers/agenti/agentiActions";
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -28,15 +26,15 @@ const store = createStore(
 
 
 sagaMiddleware.run(rootSaga);
-if (sessionStorage.user) {
-  const response = JSON.parse(sessionStorage.user);
-  store.dispatch(setUser(response));
-}
-if (sessionStorage.agenti) {
-  const response = JSON.parse(sessionStorage.agenti);
-  store.dispatch(setAgentiRequest(response));
-
-}
+// if (sessionStorage.user) {
+//   const response = JSON.parse(sessionStorage.user);
+//   store.dispatch(userActions.setUser(response));
+// }
+// if (sessionStorage.agenti) {
+//   const response = JSON.parse(sessionStorage.agenti);
+//   store.dispatch(AgentiActions.setAgente(response));
+//
+// }
 
 ReactDOM.render(
   <BrowserRouter>
