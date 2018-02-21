@@ -3,13 +3,15 @@ import { combineReducers } from "redux";
 import user from "./containers/login/user";
 import agenti from "./containers/agenti/agenti"
 import clienti from "./containers/clienti/clienti"
+import categorie from "./components/leftMenu/categorie"
 import {types as userTypes} from './containers/login/user'
 
 const appReducer = combineReducers({
   user,
   apiRequest,
   agenti,
-  clienti
+  clienti,
+  categorie
 });
 
 const rootReducer = ( state, action ) => {

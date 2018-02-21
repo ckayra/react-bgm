@@ -36,5 +36,7 @@ export default {
           //     sessionTimeOut(credentials);
           //   }}),
     },
-
+    catalogo:{
+  		getCategorie:(user) =>  ax.post( 'categorie', user).then(res => res.data),
+  	},
 }

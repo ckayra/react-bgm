@@ -1,5 +1,6 @@
 import {types as userTypes} from './containers/login/user'
 import {types as agentiTypes} from './containers/agenti/agenti'
+import {types as categorieTypes} from './components/leftMenu/categorie'
 
 const debug=true
 
@@ -28,6 +29,9 @@ export  default (store) => next => action => {
     case userTypes.USER_SETCLIENTE: // select cliente
       sessionStorage.setItem('user',JSON.stringify(store.getState().user))
         break;
+    case categorieTypes.CATEGORIE_SET: // elenco categorie per left menu
+      sessionStorage.setItem('categorie',JSON.stringify(action.response))
+      break;
     default:
 
   }

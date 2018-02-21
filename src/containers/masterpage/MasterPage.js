@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import imgSettings from '../../images/settings.png'
 import imgLogoBgm from '../../images/logoBGM-New.png'
 import UserAccount from '../navbar/useraccount'
 import Agente from '../navbar/agente'
@@ -15,6 +14,7 @@ import UserRoute from '../../routes/UserRoute'
 import MasterRoute from '../../routes/MasterRoute'
 import NotClienteRoute from '../../routes/NotClienteRoute'
 import DefaultHomeRoute from '../../routes/DefaultHomeRoute'
+import LeftMenu from '../../components/leftMenu/LeftMenu'
 
 const MasterPage= ({location}) =>(
   <div className="wrapper">
@@ -30,21 +30,9 @@ const MasterPage= ({location}) =>(
 
     <NavMenu />
   </div>
-  <div className="main-leftsidebar" >
-    <div className="main-leftsidebar-commands">
-      <div className="nav-menucataweb">
-        <i className="material-icons">reorder</i>
-      </div>
-      <div className="nav-condizioni"><img src={imgSettings} alt='settings' /></div>
-    </div>
-    <div>
-      <ul>
-      <li>Menu 1</li>
-      <li>Menu 1</li>
-      <li>Menu 1</li>
-      </ul>
-    </div>
-  </div>
+
+  <LeftMenu />
+
   <div className="main-content">
 
   <DefaultHomeRoute location={location} path="/home" exact component={HomePage}/>

@@ -2,6 +2,7 @@ import loginSaga from './containers/login/loginSaga'
 import userSaga from './containers/login/userSaga'
 import agentiSaga from './containers/agenti/agentiSaga'
 import clientiSaga from './containers/clienti/clientiSaga'
+import categorieSaga from './components/leftMenu/categorieSaga'
 
 export default function* rootSaga () {
 
@@ -9,6 +10,7 @@ export default function* rootSaga () {
     loginSaga(),
     userSaga(),
     agentiSaga(),
-    clientiSaga()
+    clientiSaga(),
+    categorieSaga()
   ]
 }

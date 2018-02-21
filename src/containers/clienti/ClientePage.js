@@ -22,14 +22,97 @@ class ClientePage extends React.Component {
       <Container>
       <Form size='tiny'>
     <Form.Field>
-      <label>First Name</label>
+      <label>Ragione Sociale</label>
       <input placeholder='First Name' />
     </Form.Field>
     <Form.Field>
-      <label>Last Name</label>
+      <label>Partita Iva</label>
       <input placeholder='Last Name' />
     </Form.Field>
-
+    <Form.Field>
+      <label>Indirizzo</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>CAP</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Località</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Codice Fiscale</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Commerciale</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Commerciale</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Commerciale</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Ordini</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Ordini</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Ordini</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Fatturazione</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Fatturazione</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Email Fatturazione</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Pagamento</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Iban</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Data inizio attività</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Tipo cliente</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Zona</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Listino</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Spedizione</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Porto</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
     <Button type='submit'>Submit</Button>
   </Form>
   </Container>

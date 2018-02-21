@@ -1,6 +1,7 @@
 import React  from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+import {Loader } from 'semantic-ui-react'
 import api from "../../api";
 import {StringToImporto} from '../../components/utils/Importo'
 
@@ -37,6 +38,7 @@ class DatiContabili extends React.Component {
 			return (
 				<div className='centerv centerh'>
 					<div className='divDatiContabili shadow2'>
+					<Loader active={this.state.loading} inverted size='large'/>
 						<span className='etichetta'>Saldo Contabile</span><span className='valore'>{StringToImporto(dc.saldCont,'-')}</span>
 						<span className='etichetta'>Scaduto</span><span className='valore'>{StringToImporto(dc.scaduto,'-')}</span>
 						<span className='etichetta'>Nr. Insoluti Aperti</span><span className='valore'>{dc.nrInsol}</span>
