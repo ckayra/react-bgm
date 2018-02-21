@@ -1,13 +1,15 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { types as agentiTypes } from './agenti'
+import {  types as agentiTypes } from './agenti'
 import { types as apiTypes} from '../../apiHelper'
 import api from "../../api";
 
 function* agentiFlow (action) {
     yield put({ type: apiTypes.API_REQUEST})
   try {
+
     const response = yield call(api.agenti.getAgenti, action.user)
     yield put({ type: apiTypes.API_SUCCESS,response})
+    sessionStorage.setItem('agenti',JSON.stringify(response))
     yield put({ type: agentiTypes.AGENTI_SET,response})
   } catch (error) {
     try {
@@ -22,9 +24,7 @@ function* agentiFlow (action) {
 
 
 function* agentiSaga () {
-  yield [
-    takeLatest(agentiTypes.AGENTI_GET, agentiFlow)
-  ]
+  yield takeLatest(agentiTypes.AGENTI_GET, agentiFlow)
 
 }
 

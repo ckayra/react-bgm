@@ -24,15 +24,15 @@ class AgentiPage extends React.Component {
     this.props.history.push("/clienti");
   };
 
-  columns = [
-    {
+  columns = [{
       title: "Cod. Agente",
       field: "codiceAgente",
       maxWidth: 100,
       align: "right"
     },
     { title: "Ragione Sociale", field: "desAgente" }
-  ];
+  ]
+
 
   render() {
     return (

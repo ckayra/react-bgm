@@ -27,6 +27,14 @@ export default {
       getDatiContabili:(user)=>
       ax
         .post( `daticontabili`,user)
-        .then(res =>  res.data )
+        .then(res =>  res.data ),
+      getCliente:(user, codiceCliente)=>
+        ax
+          .post( `cliente?codiceCliente=${codiceCliente}`,user)
+          .then(res =>  res.data )
+          // .catch( err =>   {if (err.response.data.Message==='An error has occurred.'){
+          //     sessionTimeOut(credentials);
+          //   }}),
     },
+
 }

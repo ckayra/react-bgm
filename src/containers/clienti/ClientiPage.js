@@ -41,11 +41,23 @@ onRowClick=(rowdata,col) =>{
         )
     },
     {
-      title: "scaduto",
+       id: 'colScaduto',
+      title: "Scaduto",
       field: "scaduto",
       maxWidth: 100,
       align: "right",
-      render: val => (val === "0,00" ? "" :  StringToImporto(val) )
+      sortMethod :(a, b, desc) => {
+          if  (parseInt( String(a).replace(",", "."),10 ) >  parseInt( String(b).replace(",", "."),10 )) {
+            return 1
+          }
+          if (parseInt( String(a).replace(",", "."),10 ) <  parseInt( String(b).replace(",", "."),10 )) {
+            return -1
+          }
+          // returning 0, undefined or any falsey value will use subsequent sorts or the index as a tiebreaker
+          return 0
+        },
+        render: val => (val === "0,00" ? "" :  StringToImporto(val) )
+
     },
     {
       title: "",
@@ -59,17 +71,20 @@ onRowClick=(rowdata,col) =>{
   ];
 
   render() {
+    // let cl=this.props.clienti
+    // cl=cl.slice(0, 10)
     return (
       <Table
-        data={this.props.clienti}
+         data={this.props.clienti}
         columns={this.columns}
         loading={this.props.apiRequest.requesting}
         pageSize={this.props.clienti ? this.props.clienti.length : 0}
+          // pageSize={10}
         onRowClick={this.onRowClick}
         style={{ maxWidth: "1400px" }}
         filter
         sort={[
-          { field: "fScaduto", order: "desc" },
+          { field: "colScaduto", order: "desc" },
           { field: "ragSociale12", order: "asc" }
         ]}
       />

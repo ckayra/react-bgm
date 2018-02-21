@@ -14,9 +14,7 @@ import App from "./App";
 import rootReducer from "./rootReducer";
 import rootSaga from "./rootSaga";
 import registerServiceWorker from "./registerServiceWorker";
-// import {loadState,saveState} from "./sessionStorage"
-<<<<<<< HEAD
-
+import saveState from "./sessionStorage"
 // const persistedState = sessionStorage.getItem('reduxState') ? JSON.parse(sessionStorage.getItem('reduxState')) : {}
 // const persistedState = loadState();
 
@@ -73,8 +71,6 @@ import registerServiceWorker from "./registerServiceWorker";
  //     }
  //     next(action)
  //   }
-=======
->>>>>>> aff5bcd097a3e157a7251010ffeac33594dca11f
 
 // const persistedState = sessionStorage.getItem('reduxState') ? JSON.parse(sessionStorage.getItem('reduxState')) : {}
 // const persistedState = loadState();
@@ -124,22 +120,24 @@ import registerServiceWorker from "./registerServiceWorker";
  //   // if (nextToken !== previousToken) localStorage.setItem('token', nextToken);
  // };
 
-
- export default function localStorageMiddleware () {
-   return store => next => action => {
-     if (action.type === 'USER_SET') {
-      console.log('ciao')
-     }
-     next(action)
-   }
- }
+ // const logger = store => next => action => {
+ //   console.log('dispatching', action)
+ //   console.log('type', action.type)
+ //   if (action.type==='USER_SET'){
+ //     console.log('save user to storage', action.response)
+ //     sessionStorage.setItem("user",JSON.stringify(action.response))
+ //   }
+ //     let result = next(action)
+ //     console.log('next state', store.getState())
+ //   return result
+ // }
 
 const sagaMiddleware = createSagaMiddleware();
 
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(localStorageMiddleware,sagaMiddleware, thunk))
+  composeWithDevTools(applyMiddleware(saveState,sagaMiddleware, thunk))
 );
 
 // store.subscribe(()=>{

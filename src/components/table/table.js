@@ -39,7 +39,7 @@ class Table extends React.Component {
 
   getColumns = columns =>
     columns.map(col => {
-      const retcol = { Header: col.title, accessor: col.field,id:col.id };
+      const retcol = { Header: col.title, accessor: col.field,id:col.id,sortMethod:col.sortMethod };
       if (col.align) {
         retcol.Cell = row => (
           <div style={{ textAlign: col.align }}>
@@ -131,7 +131,7 @@ class Table extends React.Component {
         )}
         <ReactTable
           style={this.props.style}
-          className="-striped -highlight shadow1"
+          className="-striped -highlight shadow2"
           data={this.state.filteredData}
           columns={this.getColumns(this.props.columns)}
           loading={this.props.loading}
@@ -178,7 +178,8 @@ Table.propTypes = {
     field: PropTypes.string.isRequired,
     maxWidth: PropTypes.number,
     align: PropTypes.string,
-    render: PropTypes.func
+    render: PropTypes.func,
+    sortMethod:PropTypes.func
   })).isRequired,
   filter: PropTypes.bool,
   style: PropTypes.object,

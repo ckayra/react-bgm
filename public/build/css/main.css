@@ -343,9 +343,8 @@ nav-menu:not(.nav-disabled):hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 .ReactTable {
-  /* height: calc(100% - 50px)
-  padding-top:30px; */
-  height: 100%;
+  /*padding-top:30px; */
+  max-height: 97%;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: auto;
@@ -360,8 +359,9 @@ nav-menu:not(.nav-disabled):hover {
 }
 .Reactable-container {
   height: 100%;
-  overflow: hidden;
   margin: auto;
+  padding: 10px;
+  padding-top: 0px;
 }
 .ReactTable .rt-tr-group {
   cursor: pointer;
@@ -485,4 +485,4 @@ i.icon {
 .hover:hover {
   cursor: pointer;
 }
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=../../../../../../Documents/GitHub/react-bgm/react-bgm/public/build/css/main.css.map */

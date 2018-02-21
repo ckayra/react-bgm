@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import { Button,  Form,Container ,Message} from 'semantic-ui-react'
 import api from '../../api'
 
 class ClientePage extends React.Component {
@@ -9,7 +10,7 @@ class ClientePage extends React.Component {
     if (this.props.location.state && this.props.location.state.codiceCliente)
       api.clienti.getCliente(this.props.user, this.props.location.state.codiceCliente).then(cliente => {
         if (cliente) {
-          console.log(cliente)
+          console.log(cliente[0].ragSociale1)
         } else {
           console.log('error')
         }
@@ -18,7 +19,20 @@ class ClientePage extends React.Component {
 
   render(){
     return(
-      <div >nuovo cliente</div>
+      <Container>
+      <Form size='tiny'>
+    <Form.Field>
+      <label>First Name</label>
+      <input placeholder='First Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Last Name</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+
+    <Button type='submit'>Submit</Button>
+  </Form>
+  </Container>
     )
   }
 }

@@ -6,12 +6,12 @@ import api from "../../api";
 
 
 function* logoutFlow () {
-      yield put({ type: userTypes.USER_UNSET})
+    yield put({ type: userTypes.USER_SET,response:{}})
 }
 
 function* loginFlow (action) {
   try {
-    const {user } = action
+    const {user} = action
     if (user.user===undefined )  {
       return
     }
@@ -21,7 +21,6 @@ function* loginFlow (action) {
     yield put({ type: apiTypes.API_REQUEST})
     const response = yield call(api.user.login, user.user,user.password)
     yield put({ type: apiTypes.API_SUCCESS,response})
-    sessionStorage.setItem('user',JSON.stringify(response))
     yield put({ type: userTypes.USER_SET,response})
 
   } catch (error) {
@@ -57,9 +56,7 @@ function* keepaliveFlow (action) {
 function* setAgenteFlow (action) {
   try {
     const {user, codiceAgente,desAgente } = action
-    const response=yield put({ type: userTypes.USER_SETAGENTE,user,codiceAgente,desAgente})
-    console.log("set agente response", response)
-    sessionStorage.setItem('user',JSON.stringify(response.user))
+    yield put({ type: userTypes.USER_SETAGENTE,user,codiceAgente,desAgente})
   } catch (error) {
     try {
       const errors=error.response.data.errors.global

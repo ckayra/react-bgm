@@ -18,4 +18,5 @@ export default (state = initialState, action) => {
 // actions
 export const actions = {
   getClienti: (user) => ({ type: types.CLIENTI_GET, user }),
+
 }
