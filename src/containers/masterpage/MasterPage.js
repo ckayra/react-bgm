@@ -15,6 +15,7 @@ import MasterRoute from '../../routes/MasterRoute'
 import NotClienteRoute from '../../routes/NotClienteRoute'
 import DefaultHomeRoute from '../../routes/DefaultHomeRoute'
 import LeftMenu from '../../components/leftMenu/LeftMenu'
+import CarrelliApertiPage from '../carrelliaperti/CarrelliApertiPage'
 
 const MasterPage= ({location}) =>(
   <div className="wrapper">
@@ -39,7 +40,9 @@ const MasterPage= ({location}) =>(
   <MasterRoute location={location} path="/agenti" exact component={AgentiPage}/>
   <NotClienteRoute location={location} path="/clienti" exact component={ClientiPage}/>
   <UserRoute location={location} path='/daticontabili'  component={DatiContabiliPage}/>
-    <NotClienteRoute location={location} path="/cliente" exact component={ClientePage}/>
+  <NotClienteRoute location={location} path="/cliente" exact component={ClientePage}/>
+  <UserRoute location={location} path='/carrelli'  component={CarrelliApertiPage}/>
+
 
   </div>
   <div className="main-footer">FOOTER</div>

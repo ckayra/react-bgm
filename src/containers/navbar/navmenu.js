@@ -36,7 +36,7 @@ class NavMenu extends React.Component {
   render(){
     return (
       <div className="nav-menu">
-        <NavBarLink className={this.props.isNavOrdiniEnabled ? '' : 'nav-disabled'}   to="/carrelliaperti" text="Carrelli Aperti" />
+        <NavBarLink className={this.props.isNavOrdiniEnabled ? '' : 'nav-disabled'}   to="/carrelli" text="Carrelli Aperti" />
         <NavBarSubMenu text="Ordini" items={this.itemsOrdini} value="ordini" className={this.props.isNavOrdiniEnabled ? '' : 'nav-disabled'} onClick={(e)  => this.onItemClick(e,'ordini')} showSubMenu={this.state.showSubMenu} />
         <NavBarSubMenu text="Cataloghi" items={this.itemsCataloghi} value="cataloghi" className={this.props.isNavCataloghiEnabled ? '' : 'nav-disabled'} onClick={(e) => this.onItemClick(e,'cataloghi')} showSubMenu={this.state.showSubMenu} />
         {this.props.isNavAgentiVisible &&  <NavBarLink  to="/agenti" text="Agenti" />}

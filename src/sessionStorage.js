@@ -11,11 +11,13 @@ export  default (store) => next => action => {
   // if(debug) console.log('result', result)
 
   switch (action.type) {
-    case userTypes.USER_UNSET: // logout
-      sessionStorage.clear();
-      break;
-    case userTypes.USER_SET: // login
-      sessionStorage.setItem("user",JSON.stringify(action.response))
+
+    case userTypes.USER_SET: // login - logout
+      if (action.response.user) {
+            sessionStorage.setItem("user",JSON.stringify(action.response))
+      }else{
+        sessionStorage.clear();
+      }
       break;
     case agentiTypes.AGENTI_SET: // elenco agenti
       sessionStorage.setItem('agenti',JSON.stringify(action.response))
@@ -33,7 +35,6 @@ export  default (store) => next => action => {
       sessionStorage.setItem('categorie',JSON.stringify(action.response))
       break;
     default:
-
   }
 
   if(debug) console.log('next state', store.getState())
