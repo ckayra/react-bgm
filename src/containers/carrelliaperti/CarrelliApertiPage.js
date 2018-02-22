@@ -2,18 +2,31 @@ import React from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
 import PropTypes from "prop-types";
+import {Card,Container,Menu,Icon} from 'semantic-ui-react'
 import {actions as carrelliActions} from './carrelliaperti'
+import InfoCarrello from './InfoCarrello'
 
 class CarrelliApertiPage extends React.Component{
 
   componentDidMount() {
-    console.log("mont carrelli")
     this.props.onGetCarrelli(this.props.user)
   }
 
   render(){
     return(
-      <div>carrelli aperti</div>
+      <Container>
+      <Menu compact>
+   <Menu.Item as='a'> <Icon name='block layout' /></Menu.Item>
+   <Menu.Item link><Icon name='list layout' /></Menu.Item>
+ </Menu>
+
+       <Card.Group>
+    {  this.props.carrelli.map((cart =>
+        <InfoCarrello cart={cart} />
+      ))}
+       </Card.Group>
+       </Container>
+
     )
   }
 }

@@ -63,7 +63,7 @@ function* userSaga () {
     yield [
      takeLatest(loginTypes.LOGIN_REQUEST, loginFlow),
      takeLatest(loginTypes.LOGOUT_REQUEST, logoutFlow),
-     takeLatest(loginTypes.KEEPALIVE_REQUEST, keepaliveFlow),
+// takeLatest(loginTypes.KEEPALIVE_REQUEST, keepaliveFlow),
      takeLatest(userType.USER_SETAGENTE, setAgenteFlow)
     ]
 }
