@@ -5,6 +5,7 @@ import {Loader, Label } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import {actions as categorieActions} from './categorie'
 import './menucatalogo.css'
+import FloatMenu from './FloatMenu'
 
 class MenuCatalogo extends React.Component {
 
@@ -61,19 +62,7 @@ const pos =this.instance.getBoundingClientRect()
         )
         }
         </ul>
-        <div className="float-menu" style={this.state.styles}>
-        <li>
-
-        {
-this.props.categorie
-.filter((categoria)=>categoria.categoriaWeb.startsWith(this.state.filtrocategorie))
-.filter((categoria)=>categoria.categoriaWeb!==this.state.activeItem)
-.filter((categoria)=>categoria.categoriaWeb.endsWith("000000"))
-.map((cat =>
-           <ul>{cat.desCategoria}</ul>
-         ))}
-          </li>
-        </div>
+      <FloatMenu />
       </div>
     )
   }
