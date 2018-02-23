@@ -1,9 +1,25 @@
 import React from 'react'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
 import {Card,Container,Checkbox,Label,Icon,Header,Segment,Image,Menu} from 'semantic-ui-react'
+import {actions as  carrelliActions} from './carrelliaperti'
+
 
 class InfoCarrello extends React.Component{
+
+
+  state = {
+      user: this.props.user,
+      cart: this.props.cart,
+    };
+
+  // toggleAttivo=()=>{
+  //   this.props.onLoginRequest(this.state.user)
+  // }
+
+
+
 
   render(){
     return(
@@ -33,17 +49,17 @@ class InfoCarrello extends React.Component{
       <Card.Meta content={this.props.cart.nrdocumento} />
 
       </Card.Content>
-     <Menu borderless={true} compact={true} size='tiny'>
-         <Menu.Item>
-          <Icon name='trash' color='red' label='Attivo'/>
- </Menu.Item>
+      <Menu borderless={true} compact={true} size='tiny'>
+      <Menu.Item>
+      <Icon name='trash' color='red' label='Attivo'/>
+      </Menu.Item>
 
-        <Menu.Item>
-          {`Creato il ${this.props.cart.birthday}`} <br/> {`Ultima mod. ${this.props.cart.dateLastchange}` }
-</Menu.Item>
-        <Menu.Item>
-            <Checkbox toggle checked={this.props.cart.sospeso===''} /></Menu.Item>
-         </Menu>
+      <Menu.Item>
+      {`Creato il ${this.props.cart.birthday}`} <br/> {`Ultima mod. ${this.props.cart.dateLastchange}` }
+      </Menu.Item>
+      <Menu.Item>
+      <Checkbox toggle checked={this.props.cart.sospeso===''} onClick={this.props.onToggleSospeso(this.state)}/></Menu.Item>
+      </Menu>
 
 
 
@@ -69,7 +85,12 @@ InfoCarrello.propTypes = {
     desAgente: PropTypes.string,
   }
 ).isRequired,
+onToggleSospeso:PropTypes.func.isRequired
 };
+
+const mapDispatchToProps = (dispatch) => ({
+    onToggleSospeso: bindActionCreators(carrelliActions.toggleSospeso, dispatch),
+})
 
 function mapStateToProps(state) {
   return {
@@ -78,4 +99,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(InfoCarrello);
+export default connect(mapStateToProps,mapDispatchToProps)(InfoCarrello);

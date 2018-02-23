@@ -9,7 +9,6 @@ import carrelliSaga from './containers/carrelliaperti/carrelliSaga'
 export default function* rootSaga () {
 
   yield [
-    loginSaga(),
     userSaga(),
     agentiSaga(),
     clientiSaga(),
