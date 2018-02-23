@@ -8,7 +8,6 @@ class InfoCarrello extends React.Component{
   render(){
     return(
       <Card
-      href={`/carrelli/${this.props.cart.nrdocumento}`}
 
       >
 
