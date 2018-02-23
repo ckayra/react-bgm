@@ -80,11 +80,10 @@ InfoCarrello.propTypes = {
     desAgente: PropTypes.string,
   }
 ).isRequired,
-  onToggleSospeso:PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onToggleSospeso: bindActionCreators(carrelliActions.toggleSospeso, dispatch),
+    onToggleSospeso: bindActionCreators(carrelliActions.loginRequest, dispatch),
 })
 
 function mapStateToProps(state) {
