@@ -13,6 +13,7 @@ export  default (store) => next => action => {
   switch (action.type) {
 
     case userTypes.USER_SET: // login - logout
+    console.log('user set',action.response)
       if (action.response.user) {
             sessionStorage.setItem("user",JSON.stringify(action.response))
       }else{
