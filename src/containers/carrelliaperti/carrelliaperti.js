@@ -25,10 +25,6 @@ export default (state = initialState, action) => {
 // actions
 export const actions = {
   getCarrelli: (user) => ({ type: types.CARRELLI_GET, user }),
-<<<<<<< HEAD
   toggleSospeso: (user,nrdocumento) => ({ type: types.CARRELLO_TOGGLESOSPESO,payload: {user,nrdocumento}}),
-=======
-  toggleSospeso: (state) => ({ type: types.CARRELLO_TOGGLESOSPESO, state }),
->>>>>>> c63c963c778bfa18e4c0b7babb9d31fe7a601cd2
 
 }

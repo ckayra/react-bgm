@@ -8,27 +8,13 @@ import {actions as  carrelliActions} from './carrelliaperti'
 
 class InfoCarrello extends React.Component{
 
-<<<<<<< HEAD
-=======
 
   state = {
       user: this.props.user,
       cart: this.props.cart,
     };
 
-  // toggleAttivo=()=>{
-  //   this.props.onLoginRequest(this.state.user)
-  // }
->>>>>>> c63c963c778bfa18e4c0b7babb9d31fe7a601cd2
 
-  state = {
-      user: this.props.user,
-      cart: this.props.cart,
-    };
-
-  // toggleAttivo=()=>{
-  //   this.props.onLoginRequest(this.state.user)
-  // }
 
   onToggleSospeso=()=> {
       this.props.toggleSospeso(this.props.user,this.props.cart.nrdocumento);
@@ -74,11 +60,7 @@ class InfoCarrello extends React.Component{
       {`Creato il ${this.props.cart.testata.birthday}`} <br/> {`Ultima mod. ${this.props.cart.testata.dateLastchange}` }
       </Menu.Item>
       <Menu.Item>
-<<<<<<< HEAD
-      <Checkbox toggle checked={this.props.cart.testata.sospeso!=='S'} onClick={this.onToggleSospeso}/></Menu.Item>
-=======
-      <Checkbox toggle checked={this.props.cart.sospeso===''} onClick={this.props.onToggleSospeso(this.state)}/></Menu.Item>
->>>>>>> c63c963c778bfa18e4c0b7babb9d31fe7a601cd2
+      <Checkbox toggle checked={!this.props.cart.testata.sospeso} onClick={this.onToggleSospeso}/></Menu.Item>
       </Menu>
 
 
@@ -114,32 +96,15 @@ sospeso:PropTypes.bool.isRequired
 }).isRequired
   }
 ).isRequired,
-<<<<<<< HEAD
 toggleSospeso:PropTypes.func.isRequired
-=======
-onToggleSospeso:PropTypes.func.isRequired
->>>>>>> c63c963c778bfa18e4c0b7babb9d31fe7a601cd2
 };
 
 
 const mapDispatchToProps = (dispatch) => ({
-<<<<<<< HEAD
     toggleSospeso: (user,nrdocumento) => {
       dispatch(carrelliActions.toggleSospeso(user,nrdocumento));
   }})
 
-
-// const mapDispatchToProps = (dispatch) => ({
-//   onToggleSospeso: nrdocumento => {
-//  dispatch(carrelliActions.toggleSospeso(nrdocumento));
-//  },
-//   //  onToggleSospeso: bindActionCreators(carrelliActions.toggleSospeso, dispatch),
-//   //  onToggleSospeso: (nrdocumento) => { dispatch (carrelliActions.toggleSospeso(nrdocumento))}
-// })
-=======
-    onToggleSospeso: bindActionCreators(carrelliActions.toggleSospeso, dispatch),
-})
->>>>>>> c63c963c778bfa18e4c0b7babb9d31fe7a601cd2
 
 function mapStateToProps(state) {
   return {
