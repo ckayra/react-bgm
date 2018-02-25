@@ -57,9 +57,13 @@ export default {
 
   carrelli:{
     getCarrelli:(user) =>  ax.post( 'carrelli', user).then(res => res.data),
+<<<<<<< HEAD
     toggleCarrelloSospeso:(user,numCarrello) => {
       console.log('api', user)
       console.log('api', numCarrello)
+=======
+    toggleCarrelloSospeso:(cart) =>  ax.post( 'carrello/togglesospeso', cart).then(res => res.data),
+>>>>>>> c63c963c778bfa18e4c0b7babb9d31fe7a601cd2
 
     ax.post( `togglesospeso?numCarrello=${numCarrello}`, user).then(res => res.data)
 }
