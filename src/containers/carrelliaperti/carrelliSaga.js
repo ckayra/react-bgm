@@ -22,12 +22,11 @@ function* carrelliFlow (action) {
 
 
 function* togglesospesoFlow (action) {
-console.log('action',action)
     yield put({ type: apiTypes.API_REQUEST})
   try {
-    const response = yield call(api.carrelli.toggleCarrelloSospeso,action.payload.user,action.payload.nrdocumento)
-
+    let response = yield call(api.carrelli.toggleCarrelloSospeso,action.payload.user,action.payload.cart.nrdocumento)
     yield put({ type: apiTypes.API_SUCCESS,response})
+    response=action.payload.cart
     yield put({ type: carrelliTypes.CARRELLO_SETSOSPESO,response})
   } catch (error) {
     try {

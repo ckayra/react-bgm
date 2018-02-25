@@ -33,7 +33,7 @@
     "fixlint": "npm run lint -- --fix",
     "lessw": "less-watch-compiler",
     "lessbuildo": "lessc P:/Users/int93/Desktop/bgm-react/src/css/main.less P:/Users/int93/Desktop/bgm-react/public/build/css/main.css --source-map=P:/Users/int93/Desktop/bgm-react/public/build/css/main.css.map",
-    "lessbuildc": "lessc C:/Users/Chiara/Desktop/react/react-bgm/src/css/main.less C:/Users/Chiara/Desktop/react/react-bgm/public/build/css/main.css --source-map=C:/Users/Chiara/Documents/GitHub/react-bgm/react-bgm/public/build/css/main.css.map"
+    "lessbuildc": "lessc C:/Users/Chiara/Desktop/react/react-bgm/src/css/main.less C:/Users/Chiara/Desktop/react/react-bgm/public/build/css/main.css --source-map=C:/Users/Chiara/Desktop/react/react-bgm/public/build/css/main.css.map"
   },
   "devDependencies": {
     "eslint": "^4.16.0",

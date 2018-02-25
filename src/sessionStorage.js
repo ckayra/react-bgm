@@ -1,6 +1,7 @@
 import {types as userTypes} from './containers/login/user'
 import {types as agentiTypes} from './containers/agenti/agenti'
 import {types as categorieTypes} from './components/leftMenu/categorie'
+import {types as carrelloTypes} from './containers/carrello/carrello'
 
 const debug=true
 
@@ -13,7 +14,6 @@ export  default (store) => next => action => {
   switch (action.type) {
 
     case userTypes.USER_SET: // login - logout
-    console.log('user set',action.response)
       if (action.response.user) {
             sessionStorage.setItem("user",JSON.stringify(action.response))
       }else{
@@ -35,6 +35,9 @@ export  default (store) => next => action => {
     case categorieTypes.CATEGORIE_SET: // elenco categorie per left menu
       sessionStorage.setItem('categorie',JSON.stringify(action.response))
       break;
+      case carrelloTypes.CARRELLO_SET: // carrello
+        sessionStorage.setItem('carrelloInUso',JSON.stringify(action.response))
+        break;
     default:
   }
 

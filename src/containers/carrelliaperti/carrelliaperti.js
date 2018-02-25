@@ -13,10 +13,22 @@ export const initialState = []
 export default (state = initialState, action) => {
    switch (action.type) {
      case types.CARRELLI_SET:  return action.response;
-     case types.CARRELLO_SETSOSPESO:   return {
-        ...state,
-          sospeso:action.cart.sospeso,
-      };
+     case types.CARRELLO_SETSOSPESO:
+      {
+
+      return state.map( (cart, index) => {
+       if(cart.nrdocumento !== action.response.nrdocumento) {
+           return cart;
+       }
+       return {
+           ...cart,
+           testata:{
+             ...cart.testata,
+             sospeso:!action.response.testata.sospeso
+           }
+       };
+   });
+    }
      default:
       return state
    }
@@ -25,6 +37,6 @@ export default (state = initialState, action) => {
 // actions
 export const actions = {
   getCarrelli: (user) => ({ type: types.CARRELLI_GET, user }),
-  toggleSospeso: (user,nrdocumento) => ({ type: types.CARRELLO_TOGGLESOSPESO,payload: {user,nrdocumento}}),
+  toggleSospeso: (user,cart) => ({ type: types.CARRELLO_TOGGLESOSPESO,payload: {user,cart}}),
 
 }

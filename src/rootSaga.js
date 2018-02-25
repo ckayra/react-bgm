@@ -4,6 +4,7 @@ import agentiSaga from './containers/agenti/agentiSaga'
 import clientiSaga from './containers/clienti/clientiSaga'
 import categorieSaga from './components/leftMenu/categorieSaga'
 import carrelliSaga from './containers/carrelliaperti/carrelliSaga'
+import carrelloSaga from './containers/carrello/carrelloSaga'
 
 
 export default function* rootSaga () {
@@ -13,6 +14,8 @@ export default function* rootSaga () {
     agentiSaga(),
     clientiSaga(),
     categorieSaga(),
-    carrelliSaga()
+    carrelliSaga(),
+    carrelloSaga()
+
   ]
 }

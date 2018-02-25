@@ -481,9 +481,9 @@ input[type="search"].search {
     grid-column: 4;
   }
 }
-i.icon {
+/* i.icon {
   font-size: 22px!important;
-}
+} */
 .hover:hover {
   cursor: pointer;
 }

@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
+import {withRouter} from "react-router-dom";
 import {Card,Container,Checkbox,Label,Icon,Header,Segment,Image,Menu} from 'semantic-ui-react'
 import {actions as  carrelliActions} from './carrelliaperti'
+import {actions as  carrelloActions} from '../carrello/carrello'
 
 
 class InfoCarrello extends React.Component{
@@ -17,9 +19,13 @@ class InfoCarrello extends React.Component{
 
 
   onToggleSospeso=()=> {
-      this.props.toggleSospeso(this.props.user,this.props.cart.nrdocumento);
+      this.props.toggleSospeso(this.props.user,this.props.cart);
     }
 
+    onSelectCart=() =>{
+     this.props.onSetCarrelloInUso(this.props.user,this.props.cart.nrdocumento);
+     this.props.history.push({pathname:"carrello",state: { nrdocumento: this.props.cart.nrdocumento }});
+    }
 
 
   render(){
@@ -29,7 +35,7 @@ class InfoCarrello extends React.Component{
 
       >
 
-      <Card.Content>
+      <Card.Content onClick={this.onSelectCart}>
 
       <Header size='small'  floated='right' textAlign='center'>
       {`${this.props.cart.testata.nrItem} pz.`}
@@ -51,9 +57,9 @@ class InfoCarrello extends React.Component{
       <Card.Meta content={this.props.cart.nrdocumento} />
 
       </Card.Content>
-      <Menu borderless={true} compact={true} size='tiny'>
+      <Menu borderless={true} compact={true} >
       <Menu.Item>
-      <Icon name='trash' color='red' label='Attivo'/>
+      <Icon name='trash' color='red' label='Attivo' />
       </Menu.Item>
 
       <Menu.Item>
@@ -62,10 +68,6 @@ class InfoCarrello extends React.Component{
       <Menu.Item>
       <Checkbox toggle checked={!this.props.cart.testata.sospeso} onClick={this.onToggleSospeso}/></Menu.Item>
       </Menu>
-
-
-
-
       </Card>
     )
   }
@@ -96,14 +98,23 @@ sospeso:PropTypes.bool.isRequired
 }).isRequired
   }
 ).isRequired,
-toggleSospeso:PropTypes.func.isRequired
+toggleSospeso:PropTypes.func.isRequired,
+history: PropTypes.shape({
+  push: PropTypes.func.isRequired
+}).isRequired,
+onSetCarrelloInUso:PropTypes.func.isRequired,
+
 };
 
 
 const mapDispatchToProps = (dispatch) => ({
-    toggleSospeso: (user,nrdocumento) => {
-      dispatch(carrelliActions.toggleSospeso(user,nrdocumento));
-  }})
+    toggleSospeso: (user,cart) => {
+      dispatch(carrelliActions.toggleSospeso(user,cart));
+  },
+  onSetCarrelloInUso: (nrdocumento) => {
+    dispatch(carrelloActions.setCarrelloInUso(nrdocumento));
+},
+})
 
 
 function mapStateToProps(state) {
@@ -113,4 +124,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(InfoCarrello);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(InfoCarrello));

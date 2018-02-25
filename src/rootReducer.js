@@ -5,6 +5,7 @@ import agenti from "./containers/agenti/agenti"
 import clienti from "./containers/clienti/clienti"
 import categorie from "./components/leftMenu/categorie"
 import carrelli from "./containers/carrelliaperti/carrelliaperti"
+import carrello from "./containers/carrello/carrello"
 import {types as userTypes} from './containers/login/user'
 
 const appReducer = combineReducers({
@@ -14,6 +15,7 @@ const appReducer = combineReducers({
   clienti,
   categorie,
   carrelli,
+  carrello,
 });
 
 const rootReducer = ( state, action ) => {

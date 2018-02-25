@@ -16,6 +16,8 @@ import NotClienteRoute from '../../routes/NotClienteRoute'
 import DefaultHomeRoute from '../../routes/DefaultHomeRoute'
 import LeftMenu from '../../components/leftMenu/LeftMenu'
 import CarrelliApertiPage from '../carrelliaperti/CarrelliApertiPage'
+import CarrelloPage from '../carrello/CarrelloPage'
+
 
 const MasterPage= ({location}) =>(
   <div className="wrapper">
@@ -42,6 +44,7 @@ const MasterPage= ({location}) =>(
   <UserRoute location={location} path='/daticontabili'  component={DatiContabiliPage}/>
   <NotClienteRoute location={location} path="/cliente" exact component={ClientePage}/>
   <UserRoute location={location} path='/carrelli'  component={CarrelliApertiPage}/>
+  <UserRoute location={location} path='/carrello'  component={CarrelloPage}/>
 
 
   </div>

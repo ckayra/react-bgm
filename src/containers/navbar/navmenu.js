@@ -36,7 +36,7 @@ class NavMenu extends React.Component {
   render(){
     return (
       <div className="nav-menu">
-        <NavBarLink className={this.props.isNavOrdiniEnabled ? '' : 'nav-disabled'}   to="/carrelli" text="Carrelli Aperti" />
+        <NavBarLink className={this.props.isNavCarrelliEnabled ? '' : 'nav-disabled'}   to="/carrelli" text="Carrelli Aperti" />
         <NavBarSubMenu text="Ordini" items={this.itemsOrdini} value="ordini" className={this.props.isNavOrdiniEnabled ? '' : 'nav-disabled'} onClick={(e)  => this.onItemClick(e,'ordini')} showSubMenu={this.state.showSubMenu} />
         <NavBarSubMenu text="Cataloghi" items={this.itemsCataloghi} value="cataloghi" className={this.props.isNavCataloghiEnabled ? '' : 'nav-disabled'} onClick={(e) => this.onItemClick(e,'cataloghi')} showSubMenu={this.state.showSubMenu} />
         {this.props.isNavAgentiVisible &&  <NavBarLink  to="/agenti" text="Agenti" />}
@@ -60,12 +60,14 @@ NavMenu.propTypes = {
   isNavNuovoClienteEnabled:PropTypes.bool.isRequired,
   isNavVisualizzaEnabled:PropTypes.bool.isRequired,
   isNavCarrelloEnabled:PropTypes.bool.isRequired,
-  isNavClientiEnabled:PropTypes.bool.isRequired
+  isNavClientiEnabled:PropTypes.bool.isRequired,
+  isNavCarrelliEnabled:PropTypes.bool.isRequired
 
 };
 
 function mapStateToProps(state){
   return{
+    isNavCarrelliEnabled: state.user.user!=='' ,
     isNavClientiVisible: !!(state.user.tipoUtente==='M' || state.user.tipoUtente==='A'),
     isNavAgentiVisible: state.user.tipoUtente==='M',
     isNavNuovoClienteVisible: state.user.tipoUtente==='M' || state.user.tipoUtente==='A',

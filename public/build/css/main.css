@@ -482,10 +482,7 @@ input[type="search"].search {
     grid-column: 4;
   }
 }
-i.icon {
-  font-size: 22px!important;
-}
 .hover:hover {
   cursor: pointer;
 }
-/*# sourceMappingURL=../../../../../../Documents/GitHub/react-bgm/react-bgm/public/build/css/main.css.map */
+/*# sourceMappingURL=main.css.map */

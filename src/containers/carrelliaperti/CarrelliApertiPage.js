@@ -15,17 +15,17 @@ class CarrelliApertiPage extends React.Component{
   render(){
     return(
       <Container>
-      <Menu compact>
-   <Menu.Item as='a'> <Icon name='block layout' /></Menu.Item>
-   <Menu.Item link><Icon name='list layout' /></Menu.Item>
- </Menu>
+      <Menu compact='true'   size='mini' >
+      <Menu.Item as='a'> <Icon name='block layout'  fitted='true' /></Menu.Item>
+      <Menu.Item link><Icon name='list layout' fitted='true' /></Menu.Item>
+      </Menu>
 
-       <Card.Group>
-    {  this.props.carrelli.map((cart =>
+      <Card.Group>
+      {  this.props.carrelli.map((cart =>
         <InfoCarrello cart={cart} />
       ))}
-       </Card.Group>
-       </Container>
+      </Card.Group>
+      </Container>
 
     )
   }
@@ -42,22 +42,22 @@ CarrelliApertiPage.propTypes = {
     password: PropTypes.string.isRequired,
     lang: PropTypes.string.isRequired,
     codiceAgente:PropTypes.string.isRequired
-}).isRequired,
+  }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   carrelli:PropTypes.arrayOf( PropTypes.shape({
-     nrdocumento: PropTypes.string,
-     agente: PropTypes.string,
-     desAgente: PropTypes.string,
-   }
-   )),
-   apiRequest: PropTypes.shape({
-     errors: PropTypes.array,
-     requesting: PropTypes.bool,
-     successful: PropTypes.bool,
-   }).isRequired,
-   onGetCarrelli: PropTypes.func.isRequired,
+    nrdocumento: PropTypes.string,
+    agente: PropTypes.string,
+    desAgente: PropTypes.string,
+  }
+)),
+apiRequest: PropTypes.shape({
+  errors: PropTypes.array,
+  requesting: PropTypes.bool,
+  successful: PropTypes.bool,
+}).isRequired,
+onGetCarrelli: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -69,7 +69,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    onGetCarrelli: bindActionCreators(carrelliActions.getCarrelli, dispatch),
+  onGetCarrelli: bindActionCreators(carrelliActions.getCarrelli, dispatch),
   //  onSetAgente: bindActionCreators(userActions.setAgente,dispatch)
 })
 
