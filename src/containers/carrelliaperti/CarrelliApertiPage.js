@@ -15,14 +15,14 @@ class CarrelliApertiPage extends React.Component{
   render(){
     return(
       <Container>
-      <Menu compact='true'   size='mini' >
-      <Menu.Item as='a'> <Icon name='block layout'  fitted='true' /></Menu.Item>
-      <Menu.Item link><Icon name='list layout' fitted='true' /></Menu.Item>
+      <Menu compact   size='mini' >
+      <Menu.Item as='a'> <Icon name='block layout'  fitted  /></Menu.Item>
+      <Menu.Item link><Icon name='list layout' fitted  /></Menu.Item>
       </Menu>
 
       <Card.Group>
-      {  this.props.carrelli.map((cart =>
-        <InfoCarrello cart={cart} />
+      {  this.props.carrelli.map(((cart) =>
+        <InfoCarrello key={cart.nrdocumento} cart={cart} />
       ))}
       </Card.Group>
       </Container>

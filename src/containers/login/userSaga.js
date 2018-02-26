@@ -23,7 +23,7 @@ function* loginFlow (action) {
     const response = yield call(api.user.login, user.user,user.password)
     yield put({ type: apiTypes.API_SUCCESS,response})
     // sessionStorage.setItem('user',JSON.stringify(response))
-    yield put({ type: userType.USER_SET,response})
+    yield put({ type: userTypes.USER_SET,response})
 
   } catch (error) {
     try {
@@ -46,7 +46,7 @@ function* keepaliveFlow (action) {
     try {
       const errors=error.response.data.errors.global
       yield put({ type: apiTypes.API_ERROR,errors})
-      yield put({ type: userType.USER_SET,response:{}})
+      yield put({ type: userTypes.USER_SET,response:{}})
 
     } catch (e) {
       const errors=error

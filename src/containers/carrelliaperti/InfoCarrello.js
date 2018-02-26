@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux'
 import {withRouter} from "react-router-dom";
-import {Card,Container,Checkbox,Label,Icon,Header,Segment,Image,Menu} from 'semantic-ui-react'
+import {Card,Checkbox,Label,Icon,Header,Menu} from 'semantic-ui-react'
 import {actions as  carrelliActions} from './carrelliaperti'
 import {actions as  carrelloActions} from '../carrello/carrello'
 
@@ -23,7 +22,7 @@ class InfoCarrello extends React.Component{
     }
 
     onSelectCart=() =>{
-     this.props.onSetCarrelloInUso(this.props.user,this.props.cart.nrdocumento);
+    // this.props.onSetCarrelloInUso(this.props.user,this.props.cart.nrdocumento);
      this.props.history.push({pathname:"carrello",state: { nrdocumento: this.props.cart.nrdocumento }});
     }
 

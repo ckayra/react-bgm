@@ -1,15 +1,15 @@
 import axios from 'axios'
 
-const ax = axios.create({
-  baseURL: 'http://provebgm2.elelco.it/api/',
-  timeout: 60000,
-})
-
-//
 // const ax = axios.create({
-//   baseURL: 'http://localhost:40049/api/',
+//   baseURL: 'http://provebgm2.elelco.it/api/',
 //   timeout: 60000,
 // })
+
+
+const ax = axios.create({
+  baseURL: 'http://localhost:40049/api/',
+  timeout: 60000,
+})
 
 export default {
   user:{
@@ -58,6 +58,9 @@ export default {
   carrelli:{
     getCarrelli:(user) =>  ax.post( 'carrelli', user).then(res => res.data),
     toggleCarrelloSospeso:(user,numCarrello) => ax.post( `togglesospeso?numCarrello=${numCarrello}`, user).then(res => res.data),
-    getCarrello:(user,numCarrello) => ax.post( `carrello?numCarrello=${numCarrello}`, user).then(res => res.data),
+    getCarrello:(user,numCarrello) => ax.post( `getcarrello?numCarrello=${numCarrello}`, user).then(res => res.data),
+    // getTotaliCarrello:(user,totcar) => ax.post( `gettotalicarrello`, {request:{user,totcar}}).then(res => res.data),
+    getTotaliCarrello:(parms) => ax.post( `gettotalicarrello`, parms).then(res => res.data),
+
   },
 }

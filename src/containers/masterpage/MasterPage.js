@@ -4,6 +4,7 @@ import imgLogoBgm from '../../images/logoBGM-New.png'
 import UserAccount from '../navbar/useraccount'
 import Agente from '../navbar/agente'
 import Cliente from '../navbar/cliente'
+import ShoppingCart from '../navbar/shoppingcart'
 import NavMenu from '../navbar/navmenu'
 import HomePage from '../home/HomePage'
 import AgentiPage from '../agenti/AgentiPage'
@@ -26,8 +27,9 @@ const MasterPage= ({location}) =>(
     <div className="nav-logo"><img src={imgLogoBgm} alt='logo' /></div>
     <Agente />
     <Cliente />
+    <ShoppingCart />
 
-    <div className="nav-carrello"><i className="material-icons">shopping_cart</i>2 Articoli € 123,45</div>
+    { /*  <div className="nav-carrello"><i className="material-icons">shopping_cart</i>2 Articoli € 123,45</div> */}
     <UserAccount   />
       <div className="nav-ricerca"><input type="search" placeholder="Cerca"/></div>
 

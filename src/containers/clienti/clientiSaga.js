@@ -11,6 +11,7 @@ function* clientiFlow (action) {
     yield put({ type: apiTypes.API_SUCCESS,response})
     sessionStorage.setItem('clienti',JSON.stringify(response))
     yield put({ type: clientiTypes.CLIENTI_SET,response})
+    
   } catch (error) {
     try {
       const errors=error.response.data.errors.global
@@ -21,6 +22,7 @@ function* clientiFlow (action) {
     }
   }
 }
+
 
 
 function* clientiSaga () {

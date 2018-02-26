@@ -9,11 +9,28 @@ import {StringToImporto} from '../../components/utils/Importo'
 
 class ClientiPage extends React.Component {
 
+  // state = {
+  //     clientiLoaded: [],
+  //     timer
+  //   };
+
   componentDidMount() {
     if (!this.props.clienti || this.props.clienti.length===0){
      this.props.onGetClienti(this.props.user)
+     //load 20 clienti
+
     }
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('nextProps',nextProps)
+  //    if( nextProps.clienti !== this.props.clienti ) {
+  //     this.setState({ clientiLoaded: nextProps.clienti.slice(0, 20) });
+  //     const timer = setInterval(this.tick, 1000);
+  //     this.setState({timer});
+  //   }
+  // }
+
 
 
 onRowClick=(rowdata,col) =>{
@@ -21,6 +38,7 @@ onRowClick=(rowdata,col) =>{
   if (col.id==="colModifica") {this.props.history.push({pathname:"cliente",state: { codiceCliente: rowdata.codiceCliente }});}
   else this.props.history.push("daticontabili");
 }
+
 
   columns = [
     { title: "Cod. Cliente", field: "codiceCliente", maxWidth: 100 },
@@ -71,6 +89,8 @@ onRowClick=(rowdata,col) =>{
   ];
 
   render() {
+  //  this.setState({clientiLoaded:this.props.clienti.slice(0, 20)})
+
     // let cl=this.props.clienti
     // cl=cl.slice(0, 10)
     return (
