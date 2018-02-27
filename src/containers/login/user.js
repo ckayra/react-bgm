@@ -9,10 +9,12 @@ export const types = {
 
 // reducers
 export const initialState = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.user) : {}
-export default  (state = initialState, action) => {
+export default (state = initialState, action) => {
    switch (action.type) {
      case types.USER_SET:  return action.response;
      case types.USER_SETAGENTE: {
+       console.log('ACTION',action)
+       
        return {
         ...state,
           codiceAgente:action.codiceAgente,
@@ -20,19 +22,21 @@ export default  (state = initialState, action) => {
           codiceCliente:"",
           desCliente:"",
       };}
-      case types.USER_SETCLIENTE:   return {
+      case types.USER_SETCLIENTE:
+
+        return {
          ...state,
            codiceCliente:action.codiceCliente,
            desCliente:action.desCliente,
        };
-       // case types.CARRELLO_SET:
-       // return {
-       //    ...state,
-       //      codiceAgente:action.response.testata.codAgente,
-       //      desAgente:action.response.testata.desAgente,
-       //      codiceCliente:action.response.testata.codCliente,
-       //      desCliente:action.response.testata.desCliente,
-       //  };
+       // case types.CARRELLO_SET: return {
+       //      ...state,
+       //       codiceAgente:action.response.testata.codAgente,
+       //       desAgente:action.response.testata.desAgente,
+       //       codiceCliente:action.response.testata.codCliente,
+       //       desCliente:action.response.testata.desCliente,
+       //   };
+
      default:
       return state
    }

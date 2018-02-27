@@ -5,7 +5,7 @@ import {withRouter} from "react-router-dom";
 import {Card,Checkbox,Label,Icon,Header,Menu} from 'semantic-ui-react'
 import {actions as  carrelliActions} from './carrelliaperti'
 import {actions as  carrelloActions} from '../carrello/carrello'
-
+import FormatDate from '../../components/utils/FormatDate'
 
 class InfoCarrello extends React.Component{
 
@@ -34,7 +34,7 @@ class InfoCarrello extends React.Component{
 
       >
 
-      <Card.Content onClick={this.onSelectCart}>
+      <Card.Content onClick={this.onSelectCart} style={{cursor:'pointer'}}>
 
       <Header size='small'  floated='right' textAlign='center'>
       {`${this.props.cart.testata.nrItem} pz.`}
@@ -62,7 +62,7 @@ class InfoCarrello extends React.Component{
       </Menu.Item>
 
       <Menu.Item>
-      {`Creato il ${this.props.cart.testata.birthday}`} <br/> {`Ultima mod. ${this.props.cart.testata.dateLastchange}` }
+      {`Creato il ${FormatDate(this.props.cart.testata.birthday)}`} <br/> {`Ultima mod. ${FormatDate(this.props.cart.testata.dateLastchange)}` }
       </Menu.Item>
       <Menu.Item>
       <Checkbox toggle checked={!this.props.cart.testata.sospeso} onClick={this.onToggleSospeso}/></Menu.Item>

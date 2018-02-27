@@ -1,13 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { types as loginTypes} from './login'
-import { types as userType} from './user'
+import { types as userTypes} from './user'
 import { types as clientiTypes} from '../clienti/clienti'
 import { types as apiTypes} from '../../apiHelper'
 import api from "../../api";
 
 
 function* logoutFlow () {
-      yield put({ type: userType.USER_SET,response:{}})
+      yield put({ type: userTypes.USER_SET,response:{}})
 }
 
 function* loginFlow (action) {
@@ -64,7 +64,7 @@ function* userSaga () {
      takeLatest(loginTypes.LOGIN_REQUEST, loginFlow),
      takeLatest(loginTypes.LOGOUT_REQUEST, logoutFlow),
 // takeLatest(loginTypes.KEEPALIVE_REQUEST, keepaliveFlow),
-     takeLatest(userType.USER_SETAGENTE, setAgenteFlow)
+     takeLatest(userTypes.USER_SETAGENTE, setAgenteFlow)
     ]
 }
 
