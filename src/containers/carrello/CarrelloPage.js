@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import {actions as carrelloActions} from './carrello'
-
+import {Card} from 'semantic-ui-react'
+import Articolo from './articolo'
 
 class Carrello extends React.Component{
 
@@ -18,8 +19,13 @@ class Carrello extends React.Component{
 render(){
 
   return(
-    <div>{this.props.location.state.nrdocumento}</div>
-  )
+          <Card.Group>+
+        {  console.log("CARRELLO",this.props.carrello)}
+          {!!this.props.carrello && this.props.carrello.items &&  this.props.carrello.items.map(((item) =>
+            <Articolo key={item.barcode} item={item} />
+          ))}
+          </Card.Group>
+      )
   }
 }
 
@@ -48,6 +54,19 @@ Carrello.propTypes = {
     lang: PropTypes.string.isRequired
   }).isRequired,
   onGetCarrello:PropTypes.func.isRequired,
+  carrello:PropTypes.shape({
+    testata:PropTypes.shape({
+      codAgente:PropTypes.string
+    }),
+    totali:PropTypes.shape({
+      valNetto:PropTypes.string
+    }),
+    nrdocumento: PropTypes.string,
+    items:PropTypes.arrayOf( PropTypes.shape({
+       prodotto: PropTypes.string,
+       nrPos: PropTypes.string,
+     }))
+  }).isRequired
 }
 
 export default connect(mapStateToProps, { onGetCarrello:carrelloActions.getCarrello })(Carrello);

@@ -8,13 +8,20 @@ export const types = {
 }
 
 // reducers
-// export const initialState = sessionStorage.getItem('carrelloInUso') ? JSON.parse(sessionStorage.carrelloInUso) : {}
-export const getCartInSession= () => sessionStorage.getItem('carrelloInUso') ? JSON.parse(sessionStorage.carrelloInUso) : {}
-export const initialState={
-  tipoPrezzo:"",
-  cart: getCartInSession(),
-
+ // export const initialState = sessionStorage.getItem('carrelloInUso') ? JSON.parse(sessionStorage.carrelloInUso) : {}
+export const initialState = {
+  testata:{},
+  totali:{},
+  nrdocumento:"",
+  items:[]
 }
+
+// export const getCartInSession= () => sessionStorage.getItem('carrelloInUso') ? JSON.parse(sessionStorage.carrelloInUso) : {}
+// export const initialState={
+//   tipoPrezzo:"",
+//   cart: getCartInSession(),
+//
+// }
 
 export default (state = initialState, action) => {
    switch (action.type) {

@@ -18,8 +18,8 @@ ShoppingCart.propTypes = {
 
 function mapStateToProps(state){
   return{
-    importoCarrello:  state.carrello.totali ? state.carrello.totali.valNetto : '',
-    nrItems:  state.carrello.totali ? state.carrello.totali.nrRighe : '',
+    importoCarrello: state.carrello &&  state.carrello.totali ? state.carrello.totali.valNetto : '',
+    nrItems: state.carrello &&  state.carrello.totali ? state.carrello.totali.nrRighe : '',
   }
 }
 
