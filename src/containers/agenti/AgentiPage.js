@@ -13,7 +13,6 @@ class AgentiPage extends React.Component {
 
   componentDidMount() {
     if (!this.props.agenti || this.props.agenti.length===0)     this.props.onGetAgenti(this.props.user)
-
   }
 
   setAgente = rowdata => {
