@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
+import {Container,Segment} from 'semantic-ui-react'
 import {actions as carrelloActions} from './carrello'
-
 
 class Carrello extends React.Component{
 
@@ -15,11 +15,19 @@ class Carrello extends React.Component{
   }
 
 
-render(){
+  render(){
 
-  return(
-    <div>{this.props.location.state.nrdocumento}</div>
-  )
+    return(
+      <Segment raised>
+      {  this.props.carrello.items.map(((row) =>
+
+      {row.prodotto}
+
+
+      ))}
+      </Segment>
+
+    )
   }
 }
 

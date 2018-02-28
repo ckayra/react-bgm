@@ -439,7 +439,7 @@ input[type="search"].search {
   align-items: center;
   justify-content: center;
 }
-.main-content > div {
+.main-content .centerv {
   height: 100%;
 }
 .divDatiContabili {

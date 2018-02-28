@@ -11,9 +11,10 @@ function* carrelloFlow (action) {
   try {
     const response = yield call(api.carrelli.getCarrello, action.user, action.nrdocumento)
     yield put({ type: apiTypes.API_SUCCESS,response})
-    yield put({ type: carrelloTypes.CARRELLO_SET,response})
     yield put({ type: userTypes.USER_SETAGENTE,codiceAgente:response.testata.codAgente,desAgente:response.testata.desAgente})
-    yield put({ type: userTypes.USER_SETCLIENTE,codiceCliente:response.testata.codCliente,desCliente:response.testata.desCliente})
+   yield put({ type: userTypes.USER_SETCLIENTE,codiceCliente:response.testata.codCliente,desCliente:response.testata.desCliente})
+
+    yield put({ type: carrelloTypes.CARRELLO_SET,response})
 
   } catch (error) {
     try {

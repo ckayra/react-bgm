@@ -12,7 +12,8 @@ export const initialState = sessionStorage.getItem('clienti') ? JSON.parse(sessi
 export default (state = initialState, action) => {
    switch (action.type) {
      case types.CLIENTI_SET:  return action.response;
-     case userTypes.USER_SETAGENTE: return []
+     case userTypes.USER_SETAGENTE: return [];
+     
      default:
       return state
    }

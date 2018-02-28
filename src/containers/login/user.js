@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
      case types.USER_SET:  return action.response;
      case types.USER_SETAGENTE: {
        console.log('ACTION',action)
-       
+       if (state.codiceAgente!==action.codiceAgente){
        return {
         ...state,
           codiceAgente:action.codiceAgente,
@@ -22,13 +22,17 @@ export default (state = initialState, action) => {
           codiceCliente:"",
           desCliente:"",
       };}
+      break;
+    }
       case types.USER_SETCLIENTE:
+      if (state.codiceCliente!==action.codiceCliente){
 
         return {
          ...state,
            codiceCliente:action.codiceCliente,
            desCliente:action.desCliente,
-       };
+       };}
+       break;
        // case types.CARRELLO_SET: return {
        //      ...state,
        //       codiceAgente:action.response.testata.codAgente,
