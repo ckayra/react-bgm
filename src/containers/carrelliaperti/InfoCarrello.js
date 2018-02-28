@@ -22,7 +22,7 @@ class InfoCarrello extends React.Component{
     }
 
     onSelectCart=() =>{
-    // this.props.onSetCarrelloInUso(this.props.user,this.props.cart.nrdocumento);
+    // #TODO se carrello diverso cancellare prima il precedente carrello dallo stato
      this.props.history.push({pathname:"carrello",state: { nrdocumento: this.props.cart.nrdocumento }});
     }
 

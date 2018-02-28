@@ -1,15 +1,15 @@
 import axios from 'axios'
 
-// const ax = axios.create({
-//   baseURL: 'http://provebgm2.elelco.it/api/',
-//   timeout: 60000,
-// })
-
-
 const ax = axios.create({
-  baseURL: 'http://localhost:40049/api/',
+  baseURL: 'http://provebgm2.elelco.it/api/',
   timeout: 60000,
 })
+
+
+// const ax = axios.create({
+//   baseURL: 'http://localhost:40049/api/',
+//   timeout: 60000,
+// })
 
 export default {
   user:{

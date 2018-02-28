@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
+import {Item} from 'semantic-ui-react'
 import {actions as carrelloActions} from './carrello'
-import {Card} from 'semantic-ui-react'
 import Articolo from './articolo'
 
 class Carrello extends React.Component{
@@ -19,12 +19,14 @@ class Carrello extends React.Component{
 render(){
 
   return(
-          <Card.Group>+
+    <div style={{overflowY:'auto',height:'100%'}}>
+           <Item.Group divided>
         {  console.log("CARRELLO",this.props.carrello)}
-          {!!this.props.carrello && this.props.carrello.items &&  this.props.carrello.items.map(((item) =>
+          {!!this.props.carrello && this.props.carrello.items &&  this.props.carrello.items.map((item) =>
             <Articolo key={item.barcode} item={item} />
-          ))}
-          </Card.Group>
+          )}
+           </Item.Group>
+           </div>
       )
   }
 }
