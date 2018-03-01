@@ -482,6 +482,100 @@ input[type="search"].search {
     grid-column: 4;
   }
 }
+.carrello-articoli {
+  overflow-y: auto;
+  height: 100%;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+.carrello-articoli .articolo {
+  border-radius: 5px;
+  margin: 3px;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-areas: "immagine" "codice" "descrizione" "messaggi" "prezzi" "sconticonfezione" "speciali";
+}
+@media only screen and (min-width: 751px)  {
+  .carrello-articoli .articolo {
+    grid-template-columns: 180px 240px 140px 250px auto;
+    grid-template-rows: 35px 50px 50px;
+    grid-template-areas: "immagine codice prezzi sconticonfezione speciali" "immagine descrizione descrizione sconticonfezione speciali" "immagine messaggi messaggi messaggi messaggi";
+  }
+}
+.carrello-articoli .immagine {
+  grid-area: immagine;
+  justify-self: center;
+  background-color: green;
+}
+.carrello-articoli .codice {
+  grid-area: codice;
+  align-self: center;
+}
+.carrello-articoli .descrizione {
+  grid-area: descrizione;
+}
+.carrello-articoli .messaggi {
+  grid-area: messaggi;
+  background-color: blue;
+}
+.carrello-articoli .prezzi {
+  grid-area: prezzi;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas: "pzolordo sconto pzonetto" "pzolordo sconto pzonetto";
+  text-align: right;
+}
+.carrello-articoli .sconticonfezione {
+  grid-area: sconticonfezione;
+  padding: 7px;
+  padding-top: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-left: solid 1px lightgrey;
+  border-right: solid 1px lightgrey;
+  align-self: center;
+  color: rgba(0, 0, 0, 0.3);
+}
+.carrello-articoli .speciali {
+  grid-area: speciali;
+  background-color: pink;
+}
+.carrello-articoli .prezzi .pzolordo {
+  grid-area: pzolordo;
+}
+.carrello-articoli .prezzi .sconto {
+  grid-area: sconto;
+}
+.carrello-articoli .prezzi .pzonetto {
+  grid-area: pzonetto;
+}
+.carrello-articoli .label {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.8em;
+  line-height: 0.8em;
+}
+.carrello-articoli .valore {
+  color: rgba(0, 0, 0, 0.7);
+}
+.carrello-articoli .lblconfezione {
+  width: 90px;
+  float: left;
+}
+.carrello-articoli .lblqta {
+  width: 60px;
+  float: right;
+  text-align: right;
+}
+.carrello-articoli .sconticonfezione .label {
+  padding-bottom: 3px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.carrello-articoli .descrizione {
+  padding-left: 2px;
+  color: rgba(0, 0, 0, 0.8);
+}
 .hover:hover {
   cursor: pointer;
 }

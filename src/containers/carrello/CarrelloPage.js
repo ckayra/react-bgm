@@ -19,13 +19,11 @@ class Carrello extends React.Component{
 render(){
 
   return(
-    <div style={{overflowY:'auto',height:'100%'}}>
-           <Item.Group divided>
+           <div className='carrello-articoli'>
         {  console.log("CARRELLO",this.props.carrello)}
           {!!this.props.carrello && this.props.carrello.items &&  this.props.carrello.items.map((item) =>
             <Articolo key={item.barcode} item={item} />
           )}
-           </Item.Group>
            </div>
       )
   }

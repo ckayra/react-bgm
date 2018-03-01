@@ -7,6 +7,7 @@ const StringToNum=(imp) =>{
 }
 
 const StringToImporto = (imp,asZero) =>{
+  if (imp===undefined) return ''
   if (StringToNum(imp)===0){
     if (asZero) return asZero
     return ''
