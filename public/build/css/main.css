@@ -482,6 +482,35 @@ input[type="search"].search {
     grid-column: 4;
   }
 }
+.cliente .ui.form .fields > .field {
+  width: 100%;
+}
+@media only screen and (min-width: 751px)  {
+  .cliente .ui.form .fields > .field {
+    width: auto;
+  }
+}
+.cliente .ui.form .inline.field > label,
+.cliente .ui.form .inline.field > p,
+.cliente .ui.form .inline.fields .field > label,
+.cliente .ui.form .inline.fields .field > p,
+.cliente .ui.form .inline.fields > label {
+  width: 100%;
+}
+@media only screen and (min-width: 901px)  {
+  .cliente .ui.form .inline.field > label,
+  .cliente .ui.form .inline.field > p,
+  .cliente .ui.form .inline.fields .field > label,
+  .cliente .ui.form .inline.fields .field > p,
+  .cliente .ui.form .inline.fields > label {
+    width: auto;
+  }
+}
+@media only screen and (min-width: 751px)  {
+  .cliente .width100 {
+    width: 100px!important;
+  }
+}
 .carrello-articoli {
   overflow-y: auto;
   height: 100%;
@@ -578,5 +607,18 @@ input[type="search"].search {
 }
 .hover:hover {
   cursor: pointer;
+}
+.ui.form .inline.field > .selection.dropdown,
+.ui.form .inline.fields .field > .selection.dropdown {
+  display: inline-block !important;
+}
+.ui.dropdown .menu {
+  left: 0px!important;
+}
+.ui.tiny.form .ui.dropdown .menu > .item {
+  font-size: .85714286rem;
+}
+.ui.button {
+  background-color: #b5c6ce;
 }
 /*# sourceMappingURL=main.css.map */

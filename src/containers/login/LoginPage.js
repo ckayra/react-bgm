@@ -8,7 +8,7 @@ class LoginPage extends React.Component  {
 
   render() {
     return (
-        <div>
+        <div style={{height:'100%'}}>
               <LoginForm submit={this.submit} />
         </div>
     );

@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
-import "semantic-ui-css/semantic.min.css";
+// import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import rootReducer from "./rootReducer";
 import rootSaga from "./rootSaga";

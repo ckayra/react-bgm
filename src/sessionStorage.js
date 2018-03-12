@@ -3,7 +3,7 @@ import {types as agentiTypes} from './containers/agenti/agenti'
 import {types as categorieTypes} from './components/leftMenu/categorie'
 import {types as carrelloTypes} from './containers/carrello/carrello'
 
-const debug=true
+const debug=false
 
 export  default (store) => next => action => {
   if(debug) console.log('dispatching', action)
