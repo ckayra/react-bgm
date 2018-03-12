@@ -1,8 +1,8 @@
-.ui.dropdown{
+.nav-menu .ui.dropdown{
   display: -ms-flexbox!important;
   display: flex!important;
   display: -webkit-flex!important;
 }
-.ui.dropdown .menu{
+.nav-menu .ui.dropdown .menu{
   left:auto!important;
 }

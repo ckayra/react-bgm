@@ -18,6 +18,8 @@
 @import "tables.less";
 @import "generic.less";
 @import "daticontabili.less";
+@import "cliente.less";
+
 
 @import "carrello.less";
 @import "carrello-articolo.less";
@@ -28,6 +30,19 @@
 .hover:hover{
   cursor:pointer;
 }
-.bold{
-  font-weight: bold;
+
+.ui.form .inline.field>.selection.dropdown, .ui.form .inline.fields .field>.selection.dropdown{
+  display:inline-block!important;
+}
+.ui.dropdown .menu{
+  left:0px!important;
+}
+
+
+.ui.tiny.form .ui.dropdown .menu>.item{
+    font-size: .85714286rem;
+}
+
+.ui.button{
+  background-color: @rimarybutton;
 }

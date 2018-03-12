@@ -35,7 +35,7 @@ class ClientiPage extends React.Component {
 
 onRowClick=(rowdata,col) =>{
   this.props.onSetCliente(this.props.user,rowdata.codiceCliente,rowdata.ragSociale12);
-  if (col.id==="colModifica") {this.props.history.push({pathname:"cliente",state: { codiceCliente: rowdata.codiceCliente }});}
+  if (col.id==="colModifica") {this.props.history.push({pathname:"cliente",state: { codCliente: rowdata.codiceCliente }});}
   else this.props.history.push("daticontabili");
 }
 

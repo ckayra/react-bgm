@@ -482,10 +482,41 @@ input[type="search"].search {
     grid-column: 4;
   }
 }
+<<<<<<< HEAD
 .divCarrello {
   height: 100%;
   display: grid;
   grid-template-rows: 100px auto;
+=======
+.cliente .ui.form .fields > .field {
+  width: 100%;
+}
+@media only screen and (min-width: 751px)  {
+  .cliente .ui.form .fields > .field {
+    width: auto;
+  }
+}
+.cliente .ui.form .inline.field > label,
+.cliente .ui.form .inline.field > p,
+.cliente .ui.form .inline.fields .field > label,
+.cliente .ui.form .inline.fields .field > p,
+.cliente .ui.form .inline.fields > label {
+  width: 100%;
+}
+@media only screen and (min-width: 901px)  {
+  .cliente .ui.form .inline.field > label,
+  .cliente .ui.form .inline.field > p,
+  .cliente .ui.form .inline.fields .field > label,
+  .cliente .ui.form .inline.fields .field > p,
+  .cliente .ui.form .inline.fields > label {
+    width: auto;
+  }
+}
+@media only screen and (min-width: 751px)  {
+  .cliente .width100 {
+    width: 100px!important;
+  }
+>>>>>>> 5018b662ee3a2d925fea1db92192eeb326a39ccd
 }
 .carrello-articoli {
   position: relative;
@@ -605,7 +636,22 @@ input[type="search"].search {
 .hover:hover {
   cursor: pointer;
 }
+<<<<<<< HEAD
 .bold {
   font-weight: bold;
+=======
+.ui.form .inline.field > .selection.dropdown,
+.ui.form .inline.fields .field > .selection.dropdown {
+  display: inline-block !important;
+}
+.ui.dropdown .menu {
+  left: 0px!important;
+}
+.ui.tiny.form .ui.dropdown .menu > .item {
+  font-size: .85714286rem;
+}
+.ui.button {
+  background-color: #b5c6ce;
+>>>>>>> 5018b662ee3a2d925fea1db92192eeb326a39ccd
 }
 /*# sourceMappingURL=main.css.map */

@@ -26,13 +26,12 @@ export default (state = initialState, action) => {
     }
       case types.USER_SETCLIENTE:
       if (state.codiceCliente!==action.codiceCliente){
-
         return {
          ...state,
            codiceCliente:action.codiceCliente,
            desCliente:action.desCliente,
        };}
-       break;
+       return state
        // case types.CARRELLO_SET: return {
        //      ...state,
        //       codiceAgente:action.response.testata.codAgente,
