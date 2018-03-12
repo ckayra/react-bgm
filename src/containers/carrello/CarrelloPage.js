@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
-import {Item} from 'semantic-ui-react'
+import {Menu,Icon,TextArea} from 'semantic-ui-react'
+import LazyLoad from 'react-lazyload';
 import {actions as carrelloActions} from './carrello'
 import Articolo from './articolo'
 
@@ -17,14 +18,34 @@ class Carrello extends React.Component{
 
 
 render(){
-
+if (this.props.carrello.testata===undefined) return (<div/>)
   return(
-           <div className='carrello-articoli'>
-        {  console.log("CARRELLO",this.props.carrello)}
-          {!!this.props.carrello && this.props.carrello.items &&  this.props.carrello.items.map((item) =>
-            <Articolo key={item.barcode} item={item} />
+
+
+<div className='divCarrello'>
+  <div className='carrello-testata'>
+  <Menu icon='labeled' stackable size='mini' >
+      <Menu.Item name='Invia'  onClick={this.handleItemClick} > <Icon name='truck'/>Invia</Menu.Item>
+      <Menu.Item name='Paga ora' onClick={this.handleItemClick} > <Icon name='euro'/>Paga ora</Menu.Item>
+      <Menu.Item name='Elimina' onClick={this.handleItemClick} > <Icon name='trash'/>Elimina</Menu.Item>
+      <Menu.Item name='Stampa'  onClick={this.handleItemClick} > <Icon name='print'/>Stampa</Menu.Item>
+      <Menu.Item name='Export'  onClick={this.handleItemClick} > <Icon name='file excel outline'/>Esporta</Menu.Item>
+      <Menu.Item name='Donwload immagini'  onClick={this.handleItemClick}> <Icon name='image'/>Download immagini</Menu.Item>
+      <Menu.Menu position='right'>
+        <Menu.Item header>{this.props.carrello.nrdocumento}<br/>{this.props.carrello.testata.tipoCarr}<br/>{this.props.carrello.testata.desDivisione}</Menu.Item>
+      </Menu.Menu>
+    </Menu>
+     <TextArea rows={1} placeholder='Note' />
+  </div>
+      <div className='carrello-articoli'>
+          {!!this.props.carrello && this.props.carrello.items &&  this.props.carrello.items.map((item,index) =>
+            <LazyLoad height={152} offset={100} overflow  placeholder={<div style={{height:'152px',minHeight:'152px',backgroundColor:'green'}} />}>
+              <Articolo key={item.barcode} item={item} pos={index+1} tipoUtente={this.props.user.tipoUtente}/>
+            </LazyLoad>
           )}
-           </div>
+      </div>
+  </div>
+
       )
   }
 }

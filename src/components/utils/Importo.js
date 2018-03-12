@@ -16,4 +16,8 @@ const StringToImporto = (imp,asZero) =>{
   return  `€ ${num}`;
 }
 
-export { StringToImporto,  StringToNum}
+const senzaDecimali=(val) =>
+  parseInt(StringToNum(val),10)
+
+
+export { StringToImporto,  StringToNum, senzaDecimali}

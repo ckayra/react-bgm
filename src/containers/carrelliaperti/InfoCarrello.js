@@ -23,6 +23,7 @@ class InfoCarrello extends React.Component{
 
     onSelectCart=() =>{
     // #TODO se carrello diverso cancellare prima il precedente carrello dallo stato
+    this.props.onClearCarrello()
      this.props.history.push({pathname:"carrello",state: { nrdocumento: this.props.cart.nrdocumento }});
     }
 
@@ -101,8 +102,7 @@ toggleSospeso:PropTypes.func.isRequired,
 history: PropTypes.shape({
   push: PropTypes.func.isRequired
 }).isRequired,
-onSetCarrelloInUso:PropTypes.func.isRequired,
-
+onClearCarrello:PropTypes.func.isRequired
 };
 
 
@@ -110,9 +110,10 @@ const mapDispatchToProps = (dispatch) => ({
     toggleSospeso: (user,cart) => {
       dispatch(carrelliActions.toggleSospeso(user,cart));
   },
-  onSetCarrelloInUso: (nrdocumento) => {
-    dispatch(carrelloActions.setCarrelloInUso(nrdocumento));
-},
+  onClearCarrello: () => {
+    dispatch(carrelloActions.clearCarrello());
+  },
+
 })
 
 

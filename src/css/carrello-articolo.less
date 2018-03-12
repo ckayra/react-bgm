@@ -1,12 +1,11 @@
-.carrello-articoli{
-  overflow-y:auto;
-  height:100%;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-}
+
 
 .carrello-articoli .articolo{
+  background-color: @primary-bg;
+  background-color:rgba(96, 125, 139, 0.2);
   border-radius:5px;
   margin:3px;
+  margin-bottom:5px;
   display:grid;
   grid-gap: 2px;
     grid-template-columns: auto;
@@ -21,8 +20,8 @@
     "speciali";
 
     @media @medium {
-      grid-template-columns: 180px 240px 140px 250px auto;
-      grid-template-rows: 35px 50px 50px;
+      grid-template-columns: 160px 240px 160px 250px 200px;
+      grid-template-rows: 45px 70px 25px;
       grid-template-areas:
       "immagine codice prezzi sconticonfezione speciali"
       "immagine descrizione descrizione sconticonfezione speciali"
@@ -31,12 +30,9 @@
 }
 
 
-
-
 .carrello-articoli .immagine{
   grid-area: immagine;
   justify-self: center;
-  background-color: green;
 }
 .carrello-articoli .codice{
   grid-area: codice;
@@ -48,8 +44,6 @@
 }
 .carrello-articoli .messaggi{
   grid-area: messaggi;
-  background-color: blue;
-
 }
 .carrello-articoli .prezzi{
   grid-area: prezzi;
@@ -60,17 +54,16 @@
   "pzolordo sconto pzonetto"
   "pzolordo sconto pzonetto";
   text-align:right;
+  padding-right:15px;
 }
 .carrello-articoli .sconticonfezione{
   grid-area: sconticonfezione;
   padding: 7px;
-  padding-top: 3px;
+  padding-top: 7px;
   padding-left:15px;
   padding-right:15px;
   border-left: solid 1px lightgrey;
   border-right: solid 1px lightgrey;
-
-  align-self: center;
   color: rgba(0,0,0,.3);
 }
 .carrello-articoli .speciali{
@@ -89,7 +82,7 @@
   grid-area: pzonetto;
 }
 .carrello-articoli .label{
-  color: rgba(0,0,0,.4);
+  color: rgba(0,0,0,.4)!important;
   font-size: 0.8em;
   line-height: 0.8em;
 }
@@ -100,6 +93,7 @@
 .carrello-articoli  .lblconfezione{
   width:90px;
   float:left;
+  color: rgba(0,0,0,0.8);
 }
 .carrello-articoli .lblqta{
   width:60px;
@@ -109,11 +103,21 @@
 
 .carrello-articoli .sconticonfezione .label{
   padding-bottom:3px;
-  color: rgba(0,0,0,0.8);
   }
 
 
 .carrello-articoli  .descrizione{
-  padding-left:2px;
+  padding:3px;
   color: rgba(0,0,0,.8);
+  float: left;
+  clear: both;
+}
+.carrello-articoli .ui.image{
+  max-height: 100%;
+}
+.qta input{
+  text-align: right!important;
+}
+.carrello-articoli .ui.floating.label{
+  padding: .2833em .533em!important;
 }
